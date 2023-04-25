@@ -1,0 +1,37 @@
+ion-menu-button {
+  color: #ffffff;
+}
+.topo{
+display: flex;
+background: #0D53FC;
+width: 100%;
+min-height: var(--min-height);
+}
+.tera {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+ion-content{
+.background{
+  position: absolute;
+  background: #E6E7E9;
+  width: 100vw;
+  height: 100vh;
+  font-size: 24px;
+}
+.text{
+  color: #000;
+}
+a.fill-div {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  color: #000;
+}
+
+}

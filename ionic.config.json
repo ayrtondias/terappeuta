@@ -1,0 +1,7 @@
+{
+  "name": "terappeuta",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
