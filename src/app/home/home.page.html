@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="topo">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><a href="#" [routerLink]="['/home']" class="tera">Terappeuta</a></ion-title>
+    <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
+  </div>
+</ion-toolbar>
+
+<div class="publi">
+  <a href="#" [routerLink]="['/publicacao']" class="fill-div">
+    <img class="publi" src="assets/foto2.jpg">
+    <p class="p">Gostaria de compartilhar algo?</p>
+    <img class="icon"  src="assets/icon/image_icon.png">
+  </a>
+</div>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="background">
+    <ion-list>
+      <ion-card *ngFor="let publicacao of publicacoes">
+        <ion-card-header>
+          <ion-card-title>{{ publicacao.titulo }}</ion-card-title>
+          <ion-card-subtitle>{{ publicacao.data | date }}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          {{ publicacao.conteudo }}
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+  </div>
+</ion-content>

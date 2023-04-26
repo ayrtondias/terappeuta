@@ -1,15 +1,26 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div class="topo">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title><a href="#" [routerLink]="['/folder']" class="fill-div">Terappeuta</a></ion-title>
-    </div>
-  </ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title><a href="#" [routerLink]="['/home']" class="tera">Terappeuta</a></ion-title>
+    <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
+  </div>
+</ion-toolbar>
 
   <ion-content [fullscreen]="true">
     <div class="background">
+      <div class="publi">
+        <img class="publi" src="assets/foto2.jpg">
+        <h1>Publicação</h1>
+        <img class="icon"  src="assets/icon/attach_file.png">
+      </div>
+      <div class="cx-texto">
+        <ion-textarea rows="10" placeholder="O que gostaria compartilhar?"></ion-textarea>
+      </div>
+
+      <ion-button class="btn">Publicar</ion-button>
 
     </div>
   </ion-content>
