@@ -4,14 +4,22 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title><a href="#" [routerLink]="['/home']" class="fill-div">Terappeuta</a></ion-title>
+    <ion-title><a href="#" [routerLink]="['/home']" class="tera">Terappeuta</a></ion-title>
   </div>
 </ion-toolbar>
+
+<div class="publi">
+  <a href="#" [routerLink]="['/publicacao']" class="fill-div">
+    <img class="publi" src="assets/foto2.jpg">
+    <p class="p">Gostaria de compartilhar algo?</p>
+    <img class="icon"  src="assets/icon/image_icon.png">
+  </a>
+</div>
 
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="background">
-    <a href="#" [routerLink]="['/publicacao']" class="fill-div">Publicação</a>
+
   </div>
 </ion-content>
