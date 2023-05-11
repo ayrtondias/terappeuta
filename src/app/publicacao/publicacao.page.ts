@@ -13,6 +13,7 @@ import { format } from 'date-fns';
 })
 export class PublicacaoPage implements OnInit {
   data = "";
+  hora = "";
   conteudo = '';
   habilitaSalvar = false;
 
@@ -38,7 +39,12 @@ export class PublicacaoPage implements OnInit {
 
   async presentAlert() {
     const dataAtual = new Date();
-    const dataFormatada = dataAtual.toLocaleString();;
+    const dataFormatada = dataAtual.toLocaleString();
+    const formattedDate = format(dataAtual, 'yyyy-MM-dd');
+    const formattedTime = format(dataAtual, 'HH:mm:ss');
+
+
+
 
     const alert = await this.alertController.create({
       header: 'Alerta!',
@@ -58,7 +64,9 @@ export class PublicacaoPage implements OnInit {
             try{
               this.firestore.collection('publicacoes').add({
               conteudo: this.conteudo,
-              data: dataFormatada,
+              data: formattedDate,
+              hora: formattedTime
+
 
               });
               this.router.navigateByUrl('home');

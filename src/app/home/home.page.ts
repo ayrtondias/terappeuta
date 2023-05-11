@@ -12,9 +12,10 @@ import { formatDistanceToNow, format  } from 'date-fns';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  publicacoes: any;
+  //publicacoes: any;
   usuario: any;
   horario: Array<any> = new Array;
+  publicacoes: Observable<any[]>
 
 
 
@@ -28,7 +29,7 @@ export class HomePage implements OnInit {
     console.log(this.usuario);
 
     this.publicacoes = firestore.collection('publicacoes', ref =>
-    ref.orderBy('data', 'desc')).valueChanges();
+    ref.orderBy('data', 'desc').orderBy('hora', 'desc')).valueChanges();
     console.log(this.publicacoes);
 
     this.firestore.collection('publicacoes').get().subscribe((querySnapshot) => {

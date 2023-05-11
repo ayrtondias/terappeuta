@@ -19,6 +19,14 @@ const routes: Routes = [
   {
     path: 'notificacoes',
     loadChildren: () => import('./notificacoes/notificacoes.module').then( m => m.NotificacoesPageModule)
+  },
+  {
+    path: 'agenda',
+    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule)
+  },
+  {
+    path: 'historic-consult',
+    loadChildren: () => import('./historic-consult/historic-consult.module').then( m => m.HistoricConsultPageModule)
   }
 ];
 
