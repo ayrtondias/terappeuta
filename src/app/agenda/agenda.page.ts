@@ -25,21 +25,22 @@ export class AgendaPage implements OnInit {
 
   public dia: number = this.diaFormatado;
 
-  public dataFormatada1 = this.dia + format(this.hoje, "/MM/yyyy");
+
+  public dataFormatada1 = format(this.hoje, "yyyy-MM-") + this.dia;
 
 
 
   incrementarContador() {
     this.dia++;
     //console.log("CONTADOR: ", this.dia);
-    this.agendaDia = this.firestore.collection('agenda' , ref => ref.where('data', '==', this.dia + format(this.hoje, "/MM/yyyy")).orderBy('inicio', 'asc')).valueChanges();
+    this.agendaDia = this.firestore.collection('agenda' , ref => ref.where('data', '==', format(this.hoje, "yyyy-MM-") + this.dia).orderBy('inicio', 'asc')).valueChanges();
     console.log("Aqui: ",this.agendaDia);
   }
 
   decrementarContador() {
     this.dia--;
     //console.log("CONTADOR: ", this.dia);
-    this.agendaDia = this.firestore.collection('agenda' , ref => ref.where('data', '==', this.dia + format(this.hoje, "/MM/yyyy")).orderBy('inicio', 'asc')).valueChanges();
+    this.agendaDia = this.firestore.collection('agenda' , ref => ref.where('data', '==', format(this.hoje, "yyyy-MM-") + this.dia).orderBy('inicio', 'asc')).valueChanges();
   }
 
 
@@ -53,8 +54,8 @@ export class AgendaPage implements OnInit {
 
 
 
-    const dataFormatada2 = format(hoje, "dd/MM/yyyy");
-    console.log(this.dataFormatada1);
+    const dataFormatada2 = format(hoje, "yyyy-MM-dd");
+    console.log(dataFormatada2);
 
 
 
@@ -68,7 +69,7 @@ export class AgendaPage implements OnInit {
     this.usuario = firestore.collection('usuario').valueChanges();
     console.log(this.usuario);
 
-    this.agendaDia = firestore.collection('agenda' , ref => ref.where('data', '==', format(this.hoje, "/MM/yyyy")).orderBy('inicio', 'asc')).valueChanges();
+    this.agendaDia = firestore.collection('agenda' , ref => ref.where('data', '==', format(this.hoje, "yyyy-MM-") + this.dia).orderBy('inicio', 'asc')).valueChanges();
     console.log("Aqui: ",this.agendaDia);
 
     console.log(this.selectedDate);

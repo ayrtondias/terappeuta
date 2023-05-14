@@ -8,6 +8,11 @@ import { HistoricConsultPageRoutingModule } from './historic-consult-routing.mod
 
 import { HistoricConsultPage } from './historic-consult.page';
 
+import { LOCALE_ID, ɵregisterLocaleData } from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+
+ɵregisterLocaleData(localePt);
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +20,9 @@ import { HistoricConsultPage } from './historic-consult.page';
     IonicModule,
     HistoricConsultPageRoutingModule
   ],
-  declarations: [HistoricConsultPage]
+  declarations: [HistoricConsultPage],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt-BR' },
+  ],
 })
 export class HistoricConsultPageModule {}
