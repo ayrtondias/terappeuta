@@ -1,6 +1,7 @@
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable } from 'rxjs';
 import { Router, NavigationExtras  } from '@angular/router';
 import { formatDistanceToNow, format  } from 'date-fns';
@@ -17,11 +18,15 @@ export class HomePage implements OnInit {
   horario: Array<any> = new Array;
   publicacoes: Observable<any[]>
 
+  imageUploads = [];
+  arquivo: any;
+
 
 
   constructor(
     private router: Router,
     public firestore: AngularFirestore,
+    public storage: AngularFireStorage,
     private fireAuth: AngularFireAuth
   ) {
 
@@ -50,22 +55,49 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
-  /*publicacoes = [
-    {
-      titulo: 'Minha primeira publicação',
-      data: '2023-04-26',
-      conteudo: 'Este é o conteúdo da minha primeira publicação.'
+  /*location = 'prods/';
+
+  async storeImage(imageData: any, id) {
+    try {
+      const imageName = this.imageName();
+      return new Promise((resolve, reject) => {
+        const pictureRef = this.storage.ref(this.location+'/'+id+'/' + imageName);
+        pictureRef
+        .put(imageData)
+        .then(function () {
+        pictureRef.getDownloadURL().subscribe((url: any) => {
+        resolve(url);
+        });
+      })
+      .catch((error) => {
+          reject(error);
+      });
+    });
+    } catch (e) {}
+  }
+
+  uploadPhoto(event, produto) {
+    this.storeImage(event.target.files[0], produto.id).then(
+        (res: any) => {
+            if (res) {
+                console.log(res);
+                this.imageUploads.unshift(res);
+                this.updateImageProd(res, produto);
+        }
     },
-    {
-      titulo: 'Minha segunda publicação',
-      data: '2023-04-25',
-      conteudo: 'Este é o conteúdo da minha segunda publicação.'
-    },
-    {
-      titulo: 'Minha terceira publicação',
-      data: '2023-04-24',
-      conteudo: 'Este é o conteúdo da minha terceira publicação.'
+    (error: any) => {
+
     }
-  ];*/
+    );
+  }
+
+  updateImageProd(url: string, produto){
+    this.firestore.doc('produtos/'+produto.id).update({link: url});
+  }
+
+}*/
+
+
+
 
 }

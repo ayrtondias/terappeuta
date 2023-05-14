@@ -11,6 +11,9 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
+import { Router } from '@angular/router';
+import { HomePage } from './home/home.page';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
@@ -23,6 +26,9 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
       messagingSenderId: "23634304275",
       appId: "1:23634304275:web:bd0437aeeb9e54d4780ee6"
      }),
+  ],
+  entryComponents: [
+    HomePage // adicione a nova página aqui
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

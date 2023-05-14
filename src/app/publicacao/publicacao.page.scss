@@ -30,7 +30,9 @@ ion-menu-button {
   }
   ion-content{
     .background{
-      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       background: #E6E7E9;
       width: 100vw;
       height: 100vh;
@@ -71,13 +73,12 @@ ion-menu-button {
       text-size-adjust: 10px;
     }
     .btn{
-      background: #0D53FC;
+      --background: #0D53FC;
       width: 150px;
       height: 35px;
       color: #ffffff;
       border-radius: 5px;
       margin-top: 20px;
-
     }
 
     }

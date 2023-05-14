@@ -1,8 +1,8 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="header">
   <ion-toolbar>
     <div class="topo">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button class=""></ion-menu-button>
     </ion-buttons>
     <ion-title><a href="#" [routerLink]="['/home']" class="tera">Terappeuta</a></ion-title>
     <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
@@ -16,7 +16,7 @@
     <a href="#" [routerLink]="['/publicacao']" class="fill-div">
       <img class="publi" src="assets/foto2.jpg">
       <p class="p">Gostaria de compartilhar algo?</p>
-      <img class="icon"  src="assets/icon/image_icon.png">
+      <img class="icon"  src="assets/icon/image_icon.png" type="file">
     </a>
   </div>
 
@@ -32,6 +32,7 @@
         </ion-card-header>
         <ion-card-content>
           <p class="conteudoPost">{{ publicacao.conteudo }}</p>
+          <!-- <ion-img *ngIf="mostrarCard; else naoMostrar"></ion-img> -->
         </ion-card-content>
       </ion-card>
     </ion-list>
