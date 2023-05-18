@@ -21,7 +21,6 @@ img.not-icon{
   margin-top: 13px;
   margin-right: 10px;
 }
-
 ion-content{
   .background{
     position: absolute;
@@ -42,60 +41,40 @@ ion-content{
     font-size: 40px;
     color: #4B4B4B;
   }
-  .fotoPerfil{
-    align-items: center;
-    width: 150px;
-    height: 150px;
-    border-radius: 100px;
-    border: 1px solid #fff;
-  }
-  h2{
-    font-size: 24px;
-    color: #6a6a6a;
-  }
-  .bt{
-    font-size: 10px;
-    color: #0D53FC;
-    width: 180px;
-    height: 35px;
-    --background: #fff;
+  .pesq{
+    background: #fff;
+    width: 300px;
+    height: 40px;
+    margin-top: -5px;
+    font-size: 14px;
+    color: #7d7d7d;
     border-radius: 5px;
-    border: 1px solid #0D53FC;
+    border: 1px solid #7d7d7d;
   }
   .cabecalho{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 10%;
-    width: 350px;
+    width: 380px;
     height: 30px;
     background: #d9d9d9;
     font-size: 14px;
     color: #000;
   }
-  .col1{
-    margin-left: 25px;
-    margin-right: 20px;
-    font-size: 18px;
-  }
-  .col2{
-    margin-left: 60px;
-    font-size: 18px;
-  }
   .corpo{
     display: flex;
-    width: 350px;
-    height: 25px;
+    width: 380px;
+    height: 30px;
     background: #fff;
-    font-size: 12px;
+    font-size: 14px;
     color: #6a6a6a;
     border: 1px solid #d9d9d9;
   }
-  .icon{
-    width: 15px;
-    height: 15px;
+  .adc{
+    --background: #0BDA0B;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
   }
-
-
-
 }

@@ -1,0 +1,36 @@
+<ion-header [translucent]="true" class="header">
+  <ion-toolbar>
+    <div class="topo">
+    <ion-buttons slot="start">
+      <ion-menu-button class=""></ion-menu-button>
+    </ion-buttons>
+    <ion-title><a href="#" [routerLink]="['/home']" class="tera">Terappeuta</a></ion-title>
+    <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
+  </div>
+</ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="background">
+    <div class="publi">
+      <h1>Pacientes</h1>
+      <input class="pesq" type="text" placeholder="Pesquisar..." [(ngModel)]="searchTerm" (keyup)="search(searchTerm)">
+      <div>
+        <ion-grid>
+          <ion-row class="cabecalho">
+            <ion-col>cpf</ion-col>
+            <ion-col>Nome</ion-col>
+            <ion-col>Telefone</ion-col>
+          </ion-row>
+            <ion-row [routerLink]="['/detalhes']" class="corpo" *ngFor="let pac of (searchTerm ? searchResults : paciente) | async">
+              <ion-col >{{pac.cpf}}</ion-col>
+              <ion-col>{{pac.nome}}</ion-col>
+              <ion-col>{{pac.telefone}}</ion-col>
+            </ion-row>
+        </ion-grid>
+      </div>
+      <ion-button class="adc" [routerLink]="['/cadpacientes']">+ Adicionar</ion-button>
+
+    </div>
+  </div>
+
+</ion-content>

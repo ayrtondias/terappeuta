@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./psicologo/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'login',
@@ -17,35 +17,39 @@ const routes: Routes = [
   },
   {
     path: 'publicacao',
-    loadChildren: () => import('./publicacao/publicacao.module').then( m => m.PublicacaoPageModule)
+    loadChildren: () => import('./psicologo/publicacao/publicacao.module').then( m => m.PublicacaoPageModule)
   },
   {
     path: 'notificacoes',
-    loadChildren: () => import('./notificacoes/notificacoes.module').then( m => m.NotificacoesPageModule)
+    loadChildren: () => import('./psicologo/notificacoes/notificacoes.module').then( m => m.NotificacoesPageModule)
   },
   {
     path: 'agenda',
-    loadChildren: () => import('./agenda/agenda.module').then( m => m.AgendaPageModule)
+    loadChildren: () => import('./psicologo/agenda/agenda.module').then( m => m.AgendaPageModule)
   },
   {
     path: 'historic-consult',
-    loadChildren: () => import('./historic-consult/historic-consult.module').then( m => m.HistoricConsultPageModule)
+    loadChildren: () => import('./psicologo/historic-consult/historic-consult.module').then( m => m.HistoricConsultPageModule)
   },
   {
     path: 'pacientes',
-    loadChildren: () => import('./pacientes/pacientes.module').then( m => m.PacientesPageModule)
+    loadChildren: () => import('./psicologo/pacientes/pacientes.module').then( m => m.PacientesPageModule)
   },
   {
     path: 'cadpacientes',
-    loadChildren: () => import('./cadpacientes/cadpacientes.module').then( m => m.CadpacientesPageModule)
+    loadChildren: () => import('./psicologo/cadpacientes/cadpacientes.module').then( m => m.CadpacientesPageModule)
   },
   {
     path: 'configuracao',
-    loadChildren: () => import('./configuracao/configuracao.module').then( m => m.ConfiguracaoPageModule)
+    loadChildren: () => import('./psicologo/configuracao/configuracao.module').then( m => m.ConfiguracaoPageModule)
   },
   {
     path: 'login-paciente',
     loadChildren: () => import('./login-paciente/login-paciente.module').then( m => m.LoginPacientePageModule)
+  },
+  {
+    path: 'detalhes',
+    loadChildren: () => import('./psicologo/detalhes/detalhes.module').then( m => m.DetalhesPageModule)
   }
 
 ];

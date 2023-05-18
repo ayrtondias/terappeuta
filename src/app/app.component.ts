@@ -12,7 +12,6 @@ export class AppComponent {
     { title: 'Pacientes', url: '/pacientes', icon: '' },
     { title: 'Cadastrar pacientes', url: '/cadpacientes', icon: '' },
     { title: 'Configuração', url: '/configuracao', icon: '' },
-
   ];
   //public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {}

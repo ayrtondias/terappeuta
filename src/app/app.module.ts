@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule  } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -12,7 +12,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { Router } from '@angular/router';
-import { HomePage } from './home/home.page';
+import { HomePage } from './psicologo/home/home.page';
+import { CadpacientesPage } from './psicologo/cadpacientes/cadpacientes.page';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,11 @@ import { HomePage } from './home/home.page';
       messagingSenderId: "23634304275",
       appId: "1:23634304275:web:bd0437aeeb9e54d4780ee6"
      }),
+     RouterModule.forRoot([
+      {path: '', redirectTo: 'cadpacientes', pathMatch: 'full'},
+      { path: 'cadpacientes', component: CadpacientesPage },
+
+    ])
   ],
   entryComponents: [
     HomePage // adicione a nova página aqui
