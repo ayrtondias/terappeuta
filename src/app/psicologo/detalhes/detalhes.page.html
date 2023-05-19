@@ -1,13 +1,45 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="header">
   <ion-toolbar>
-    <ion-title>detalhes</ion-title>
-  </ion-toolbar>
+    <div class="topo">
+    <ion-buttons slot="start">
+      <ion-menu-button class=""></ion-menu-button>
+    </ion-buttons>
+    <ion-title><a href="#" [routerLink]="['/home']" class="tera">Terappeuta</a></ion-title>
+    <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
+  </div>
+</ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">detalhes</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="background">
+    <div class="publi">
+      <img class="fotoPerfil" src="assets/foto3.jpg">
+    </div>
+    <div class="info">
+      <p>Nome:</p>
+      <ion-label class="label">Luna Dias</ion-label>
+      <p>Telefone:</p>
+      <ion-label class="label">91981512516</ion-label>
+      <p>E-mail:</p>
+      <ion-label class="label">fulanadetal@gmail.com</ion-label>
+      <p>Data de Nascimento:</p>
+      <ion-label class="label">27/06/2000</ion-label>
+    </div>
+
+    <div class="plano">
+      <h2>Plano Financeiro</h2>
+      <div id="campo-plano">
+        <div class="div-esquerda">
+          <p>Plano</p>
+          <ion-label class="label">mes</ion-label>
+        </div>
+        <div class="div-direita">
+          <p>valor</p>
+          <ion-label class="label">R$ 0,00</ion-label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </ion-content>
