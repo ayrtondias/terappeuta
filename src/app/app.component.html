@@ -1,15 +1,14 @@
-
-
 <ion-app>
   <ion-menu contentId="main-content" type="overlay">
-    <ion-content >
-      <ion-list >
+
+    <ion-content *ngIf="url1.includes(router.url)">
+      <ion-list>
         <div class="background">
           <img class="imgPost" src="assets/foto2.jpg">
           <ion-label class="nome">Nome</ion-label>
         </div>
 
-            <ion-menu-toggle   >
+            <ion-menu-toggle>
               <ion-item  *ngFor="let p of appPages; let i = index">
                 <ion-label routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" >{{ p.title }}</ion-label>
               </ion-item>
@@ -17,6 +16,22 @@
             </ion-menu-toggle>
           </ion-list>
         </ion-content>
+
+        <ion-content *ngIf="url2.includes(router.url)">
+          <ion-list >
+            <div class="background">
+              <img class="imgPost" src="assets/foto2.jpg">
+              <ion-label class="nome">Nome</ion-label>
+            </div>
+
+                <ion-menu-toggle >
+                  <ion-item  *ngFor="let p of appPagesPaciente; let i = index">
+                    <ion-label routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" >{{ p.title }}</ion-label>
+                  </ion-item>
+                  <ion-button class="btSair" color="danger" [routerLink]="['/login']"  size="small">Sair</ion-button>
+                </ion-menu-toggle>
+              </ion-list>
+            </ion-content>
       </ion-menu>
 
     <ion-router-outlet id="main-content"></ion-router-outlet>

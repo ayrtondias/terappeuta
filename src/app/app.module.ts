@@ -14,6 +14,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { HomePage } from './psicologo/home/home.page';
 import { CadpacientesPage } from './psicologo/cadpacientes/cadpacientes.page';
+import { HomePacientePage } from './paciente/home-paciente/home-paciente.page';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +36,7 @@ import { CadpacientesPage } from './psicologo/cadpacientes/cadpacientes.page';
     ])
   ],
   entryComponents: [
-    HomePage // adicione a nova página aqui
+    HomePage, HomePacientePage // adicione a nova página aqui
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
