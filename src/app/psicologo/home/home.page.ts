@@ -40,64 +40,16 @@ export class HomePage implements OnInit {
     this.firestore.collection('publicacoes').get().subscribe((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         const data = doc.get('data');
-        console.log('Name:', data);
+        console.log(data);
         this.horario = data;
 
       });
     });
 
-    /*const dataPostagem = this.publicacoes.data;
-    const distanciaEmPalavras = formatDistanceToNow(dataPostagem, { addSuffix: true});
-    this.data = distanciaEmPalavras;*/
 
   }
 
   ngOnInit() {
   }
-
-  /*location = 'prods/';
-
-  async storeImage(imageData: any, id) {
-    try {
-      const imageName = this.imageName();
-      return new Promise((resolve, reject) => {
-        const pictureRef = this.storage.ref(this.location+'/'+id+'/' + imageName);
-        pictureRef
-        .put(imageData)
-        .then(function () {
-        pictureRef.getDownloadURL().subscribe((url: any) => {
-        resolve(url);
-        });
-      })
-      .catch((error) => {
-          reject(error);
-      });
-    });
-    } catch (e) {}
-  }
-
-  uploadPhoto(event, produto) {
-    this.storeImage(event.target.files[0], produto.id).then(
-        (res: any) => {
-            if (res) {
-                console.log(res);
-                this.imageUploads.unshift(res);
-                this.updateImageProd(res, produto);
-        }
-    },
-    (error: any) => {
-
-    }
-    );
-  }
-
-  updateImageProd(url: string, produto){
-    this.firestore.doc('produtos/'+produto.id).update({link: url});
-  }
-
-}*/
-
-
-
 
 }

@@ -1,0 +1,40 @@
+<ion-header [translucent]="true" class="header">
+  <ion-toolbar>
+    <div class="topo">
+    <ion-buttons slot="start">
+      <ion-menu-button class=""></ion-menu-button>
+    </ion-buttons>
+    <ion-title><a href="#" [routerLink]="['/home-paciente']" class="tera">Terappeuta</a></ion-title>
+    <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
+  </div>
+</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="background">
+    <div class="publi" *ngFor="let psi of psicologo | async">
+      <h1>Avaliação</h1>
+      <img class="fotoPerfil" src="assets/foto2.jpg">
+      <h2>{{ psi.nome }}</h2>
+    </div>
+    <p>Deixe sua avaliação</p>
+
+    <ul class="list-inline rating-list" *ngFor="let star of stars; let i= index">
+      <li (click)="countStar(star)" [ngClass]="{'selected': (star <= selectedValue)}" (mouseover)="addClass(star)"
+           (mouseout)="removeClass()"> <span class="material-icons"> <ion-icon name="star-outline"></ion-icon> </span>
+      </li>
+    </ul>
+
+    <div>
+      <p>Gostaria de deixar uma mensagem?</p>
+      <ion-textarea class="textarea" [(ngModel)]="msg"></ion-textarea>
+    </div>
+
+    <div class="btndiv">
+      <ion-button class="btn" (click)="cadastrar()">Salvar</ion-button>
+    </div>
+
+  </div>
+
+</ion-content>
+

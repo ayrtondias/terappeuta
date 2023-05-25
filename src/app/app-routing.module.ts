@@ -54,6 +54,14 @@ const routes: Routes = [
   {
     path: 'home-paciente',
     loadChildren: () => import('./paciente/home-paciente/home-paciente.module').then( m => m.HomePacientePageModule)
+  },
+  {
+    path: 'acompanhamento',
+    loadChildren: () => import('./paciente/acompanhamento/acompanhamento.module').then( m => m.AcompanhamentoPageModule)
+  },
+  {
+    path: 'det-psicologo',
+    loadChildren: () => import('./paciente/det-psicologo/det-psicologo.module').then( m => m.DetPsicologoPageModule)
   }
 
 ];

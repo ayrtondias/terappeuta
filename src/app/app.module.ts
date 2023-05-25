@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { HomePage } from './psicologo/home/home.page';
 import { CadpacientesPage } from './psicologo/cadpacientes/cadpacientes.page';
 import { HomePacientePage } from './paciente/home-paciente/home-paciente.page';
+import { AvaliacaoComponent } from './component/avaliacao/avaliacao.component'
 
 
 @NgModule({

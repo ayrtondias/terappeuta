@@ -11,65 +11,33 @@ export class AppComponent {
   url2: string[] = [];
 
   public appPages = [
-    { title: 'Home', url: '/home', icon: '' },
-    { title: 'Agenda', url: '/agenda', icon: '' },
-    { title: 'Histórico de consulta', url: '/historic-consult', icon: '' },
-    { title: 'Pacientes', url: '/pacientes', icon: '' },
-    { title: 'Cadastrar pacientes', url: '/cadpacientes', icon: '' },
-    { title: 'Configuração', url: '/configuracao', icon: '' },
+    { title: 'Home', url: '/home' },
+    { title: 'Agenda', url: '/agenda' },
+    { title: 'Histórico de consulta', url: '/historic-consult' },
+    { title: 'Pacientes', url: '/pacientes' },
+    { title: 'Cadastrar pacientes', url: '/cadpacientes' },
+    { title: 'Configuração', url: '/configuracao' },
   ];
 
   public appPagesPaciente = [
-    { title: 'Home', url: '/home-paciente', icon: '' },
+    { title: 'Home', url: '/home-paciente' },
+    { title: 'Cadastro', url: '/cadastro' },
+    { title: 'Acompanhamento', url: '/acompanhamento' },
+    { title: 'Agendamento', url: '/agendamento' },
+    { title: 'Sessões', url: '/sessoes' },
+    { title: 'Pagamentos', url: '/pagamentos' },
+    { title: 'Configuração', url: '/config-paciente' },
   ];
   constructor(public router: Router) {}
 
-
-
-  public psicologo(link: any) {
-    const url = this.router.url;
-    if(url == '/home'){
-      link = '/home';
-      console.log('mostrar', url);
-    } else
-    if(url == '/historic-consult'){
-      link = '/historic-consult';
-    } else
-    if(url == '/agenda'){
-      link = '/agenda';
-    } else
-    if(url == '/detalhes'){
-      link = '/detalhes';
-    } else
-    if(url == '/notificacoes'){
-      link = '/notificacoes';
-    } else
-    if(url == '/publicacao'){
-      link = '/publicacao';
-    } else
-    if(url == '/pacientes'){
-      link = '/historic-consult';
-    } else
-    if(url == '/cadpacientes'){
-      link = '/cadpacientes';
-    }else
-    if(url == '/configuracao'){
-      link = '/configuracao';
-    };
-  }
-
-  paciente(link: any) {
-    const url = this.router.url;
-    if(url == '/home-paciente'){
-      link = '/home-paciente';
-    };
-  }
-
   ngOnInit() {
-    this.url1 = ['/home', '/agenda', '/historic-consult', '/detalhes', '/notificacoes',
-    '/publicacao', '/pacientes', '/cadpacientes', '/configuracao']; // Adicione as URLs desejadas ao array
+    this.url1 = ['/home', '/agenda', '/historic-consult',
+     '/detalhes', '/notificacoes','/publicacao',
+     '/pacientes', '/cadpacientes', '/configuracao']; // Adicione as URLs desejadas ao array
 
-    this.url2 = ['/home-paciente'];
+    this.url2 = ['/home-paciente', '/cadastro',
+    '/acompanhamento', '/det-psicologo', '/agendamento',
+    '/sessoes', '/pagamentos', '/config-paciente'];
   }
 
 }
