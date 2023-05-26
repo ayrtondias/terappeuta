@@ -62,6 +62,14 @@ const routes: Routes = [
   {
     path: 'det-psicologo',
     loadChildren: () => import('./paciente/det-psicologo/det-psicologo.module').then( m => m.DetPsicologoPageModule)
+  },
+  {
+    path: 'diario-emocional',
+    loadChildren: () => import('./paciente/diario-emocional/diario-emocional.module').then( m => m.DiarioEmocionalPageModule)
+  },
+  {
+    path: 'hist-diario',
+    loadChildren: () => import('./paciente/hist-diario/hist-diario.module').then( m => m.HistDiarioPageModule)
   }
 
 ];

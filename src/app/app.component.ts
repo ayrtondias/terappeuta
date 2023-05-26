@@ -22,6 +22,7 @@ export class AppComponent {
   public appPagesPaciente = [
     { title: 'Home', url: '/home-paciente' },
     { title: 'Cadastro', url: '/cadastro' },
+    { title: 'Diário emocional', url: '/diario-emocional' },
     { title: 'Acompanhamento', url: '/acompanhamento' },
     { title: 'Agendamento', url: '/agendamento' },
     { title: 'Sessões', url: '/sessoes' },
@@ -35,8 +36,8 @@ export class AppComponent {
      '/detalhes', '/notificacoes','/publicacao',
      '/pacientes', '/cadpacientes', '/configuracao']; // Adicione as URLs desejadas ao array
 
-    this.url2 = ['/home-paciente', '/cadastro',
-    '/acompanhamento', '/det-psicologo', '/agendamento',
+    this.url2 = ['/home-paciente', '/cadastro', '/diario-emocional',
+    '/hist-diario', '/acompanhamento', '/det-psicologo', '/agendamento',
     '/sessoes', '/pagamentos', '/config-paciente'];
   }
 

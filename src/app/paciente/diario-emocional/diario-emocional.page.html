@@ -1,0 +1,67 @@
+<ion-header [translucent]="true" class="header">
+  <ion-toolbar>
+    <div class="topo">
+    <ion-buttons slot="start">
+      <ion-menu-button class=""></ion-menu-button>
+    </ion-buttons>
+    <ion-title><a href="#" [routerLink]="['/home-paciente']" class="tera">Terappeuta</a></ion-title>
+    <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
+  </div>
+</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="background">
+    <div class="publi">
+      <h1>Diario emocional</h1>
+    </div>
+    <div class="historic" [routerLink]="['/hist-diario']">
+      <img src="assets/icon/history.png" class="historicIcon">
+      <b class="historic">Historico</b>
+    </div>
+
+    <div class="time">
+      <div class="dia">
+        <img src="assets/icon/calendar.png" alt="" class="historicIcon">
+        <b class="dia">{{formattedDate}}</b>
+      </div>
+      <div class="hora">
+        <img src="assets/icon/time_icon.png" alt="" class="historicIcon">
+        <b class="hora">{{formattedTime}}</b>
+      </div>
+    </div>
+
+    <p>Olá, como está se sentindo?</p>
+
+
+  <div class="emocoes">
+    <div (click)="select('Muito Feliz')">
+      <img src="assets/icon/muito-feliz.png" class="mFeliz" >
+      <p class="mFeliz">Muito feliz</p>
+      </div>
+      <div (click)="select('Feliz')">
+      <img src="assets/icon/feliz.png" alt="" class="feliz" >
+      <p class="feliz">Feliz</p>
+      </div>
+      <div (click)="select('Indiferente')">
+      <img src="assets/icon/indiferente.png" alt="" class="indiferente">
+      <p class="indiferente">Indiferente</p>
+      </div>
+      <div (click)="select('Triste')">
+      <img src="assets/icon/triste.png" alt="" class="triste">
+      <p class="triste">Triste</p>
+      </div>
+      <div (click)="select('Muito triste')">
+      <img src="assets/icon/muito-triste.png" alt="" class="mTriste" >
+      <p class="mTriste">Muito triste</p>
+      </div>
+  </div>
+  <p>Como está sendo seu dia?</p>
+  <ion-textarea class="textarea" [(ngModel)]="msg"></ion-textarea>
+
+  <div class="btndiv">
+    <ion-button class="btn" (click)="cadastrar()">Salvar</ion-button>
+  </div>
+</div>
+
+</ion-content>

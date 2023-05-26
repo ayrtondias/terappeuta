@@ -79,11 +79,11 @@ public data :any;
   cadastrar(){
     this.presentAlert();
   }
+
   async presentAlert() {
     this.firestore.collection('avaliacao').doc().set({
       avaliacao: this.data,
       msg: this.msg
-
     });
     this.router.navigateByUrl('acompanhamento');
     this.presentToast('Avaliação feita com sucesso.');
@@ -95,7 +95,6 @@ public data :any;
       duration: 3000,
       position: 'middle'
     });
-
     await toast.present();
   }
 

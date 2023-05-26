@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DetPsicologoPageRoutingModule } from './det-psicologo-routing.module';
+import { DiarioEmocionalPageRoutingModule } from './diario-emocional-routing.module';
 
-import { DetPsicologoPage } from './det-psicologo.page';
-
+import { DiarioEmocionalPage } from './diario-emocional.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetPsicologoPageRoutingModule
+    DiarioEmocionalPageRoutingModule
   ],
-  declarations: [DetPsicologoPage]
+  declarations: [DiarioEmocionalPage]
 })
-export class DetPsicologoPageModule {}
+export class DiarioEmocionalPageModule {}
