@@ -15,5 +15,20 @@
     <div class="publi">
       <h1>Histórico</h1>
     </div>
+      <div class="campo" *ngFor="let diario of diarios | async">
+        <ion-img class="imgIcon" *ngIf="diario.emocao === 'Muito Feliz'" src="assets/icon/muito-feliz.png"></ion-img>
+        <ion-img class="imgIcon" *ngIf="diario.emocao === 'Feliz'" src="assets/icon/feliz.png"></ion-img>
+        <ion-img class="imgIcon" *ngIf="diario.emocao === 'Indiferente'" src="assets/icon/indiferente.png"></ion-img>
+        <ion-img class="imgIcon" *ngIf="diario.emocao === 'Triste'" src="assets/icon/triste.png"></ion-img>
+        <ion-img class="imgIcon" *ngIf="diario.emocao === 'Muito Triste'" src="assets/icon/muito-triste.png"></ion-img>
+
+        <b>{{diario.data.split('-')[1] + '/' + diario.data.split('-')[2] + '/' + diario.data.split('-')[0] | date:'dd/MM/yyyy'}}</b> |
+        <b>{{diario.hora}}</b>
+
+        <ion-img class="icon" src="assets/icon/text_icon.png" (click)="mostrarDetalhes(diario.id)"></ion-img>
+        <ion-img class="icon" src="assets/icon/delete-icon.png" (click)="deletarItem(diario.id)"></ion-img>
+
+      </div>
+
   </div>
 </ion-content>

@@ -37,8 +37,9 @@ export class AppComponent {
      '/pacientes', '/cadpacientes', '/configuracao']; // Adicione as URLs desejadas ao array
 
     this.url2 = ['/home-paciente', '/cadastro', '/diario-emocional',
-    '/hist-diario', '/acompanhamento', '/det-psicologo', '/agendamento',
-    '/sessoes', '/pagamentos', '/config-paciente'];
+    '/hist-diario', 'editar-diario', '/detalhe-diario', '/acompanhamento',
+    '/det-psicologo', '/agendamento', '/sessoes', '/pagamentos',
+    '/config-paciente'];
   }
 
 }

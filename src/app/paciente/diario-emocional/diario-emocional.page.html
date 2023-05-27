@@ -35,23 +35,24 @@
 
 
   <div class="emocoes">
-    <div (click)="select('Muito Feliz')">
+    <div class="espaco"></div>
+    <div [ngClass]="{'selected': divSelecionada  === 'div1'}" (click)="select('Muito Feliz'); selecionarDiv('div1')">
       <img src="assets/icon/muito-feliz.png" class="mFeliz" >
       <p class="mFeliz">Muito feliz</p>
       </div>
-      <div (click)="select('Feliz')">
+      <div [ngClass]="{'selected': divSelecionada  === 'div2'}" (click)="select('Feliz'); selecionarDiv('div2')">
       <img src="assets/icon/feliz.png" alt="" class="feliz" >
       <p class="feliz">Feliz</p>
       </div>
-      <div (click)="select('Indiferente')">
+      <div [ngClass]="{'selected': divSelecionada  === 'div3'}" (click)="select('Indiferente'); selecionarDiv('div3')">
       <img src="assets/icon/indiferente.png" alt="" class="indiferente">
       <p class="indiferente">Indiferente</p>
       </div>
-      <div (click)="select('Triste')">
+      <div [ngClass]="{'selected': divSelecionada  === 'div4'}" (click)="select('Triste'); selecionarDiv('div4')">
       <img src="assets/icon/triste.png" alt="" class="triste">
       <p class="triste">Triste</p>
       </div>
-      <div (click)="select('Muito triste')">
+      <div [ngClass]="{'selected': divSelecionada  === 'div5'}" (click)="select('Muito triste'); selecionarDiv('div5')">
       <img src="assets/icon/muito-triste.png" alt="" class="mTriste" >
       <p class="mTriste">Muito triste</p>
       </div>

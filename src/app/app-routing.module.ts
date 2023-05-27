@@ -70,6 +70,10 @@ const routes: Routes = [
   {
     path: 'hist-diario',
     loadChildren: () => import('./paciente/hist-diario/hist-diario.module').then( m => m.HistDiarioPageModule)
+  },
+  {
+    path: 'detalhe-diario/:id',
+    loadChildren: () => import('./paciente/detalhe-diario/detalhe-diario.module').then( m => m.DetalheDiarioPageModule)
   }
 
 ];

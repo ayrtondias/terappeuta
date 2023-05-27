@@ -35,31 +35,26 @@ ion-content{
     align-items: center;
     justify-content: center;
   }
-  h1{
-    margin-left: 50px;
-    margin-right: 30px;
-    font-size: 40px;
-    color: #4B4B4B;
-  }
-  .historic{
+  .topo{
+    background: #E6E7E9;
     display: inline-flex;
-    font-size: 14px;
-    margin-top: 10px;
+    flex-direction: column;
+    width: 420px;
+    height: 70px;
+    border: 1px solid #6a6a6a;
+  }
+  p{
     margin-left: 10px;
-    color: #6a6a6a;
+    margin-top: 2px;
   }
   .historicIcon{
-    width: 25px;
-    height: 25px;
-  }
-  b.historic{
-    margin-top: 4px;
+    width: 20px;
+    height: 20px;
   }
   .time{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+    margin-left: 10px;
+    margin-top: -15px;
   }
   .dia{
     display: inline-flex;
@@ -67,84 +62,80 @@ ion-content{
   b.dia{
     font-size: 14px;
     margin-left: 10px;
-    margin-top: 5px;
+    margin-top: 3px;
     color: #6a6a6a;
   }
   .hora{
     display: inline-flex;
+
     margin-left: 30px;
   }
   b.hora{
     font-size: 14px;
     margin-left: 10px;
-    margin-top: 5px;
+    margin-top: 3px;
     color: #6a6a6a;
   }
-  p{
-    font-size: 16px;
-    margin-left: 10px;
-    margin-top: 30px;
+  .edit{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
   }
-  .emocoes{
-    display: inline-flex;
-  }
-  .espaco{
+  .imgedit{
     width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    margin-top: -65px;
   }
-  .mFeliz{
-    width: 50px;
-    height: 50px;
-    margin: 10px 10px -10px 10px;
+  b.edit{
+    font-size: 12px;
+    position: absolute;
+    right: 20px;
+    margin-top: -33px;
+    color: #6a6a6a;
   }
-  p.mFeliz{
-    font-size: 10px;
+
+  .corpo{
+    display: inline-flex;
+    margin-top: 20px;
+  }
+  .imgIcon{
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    right: 10px;
+  }
+  .p-corpo{
+    flex-direction: column;
+    font-size: 16px;
+  }
+  .p-corpo1{
     color: #E65C00;
+    font-size: 18px;
   }
-  .feliz{
-    width: 48px;
-    height: 48px;
-    margin: 11px 10px -10px 10px;
-    text-align: center;
-  }
-  p.feliz{
-    font-size: 10px;
+  .p-corpo2{
     color: #FF7200;
+    font-size: 18px;
   }
-  .indiferente{
-    width: 52px;
-    height: 52px;
-    margin: 9px 10px -10px 10px;
-  }
-  p.indiferente{
-    font-size: 10px;
+  .p-corpo3{
     color: #9E9595;
+    font-size: 18px;
   }
-  .triste{
-    width: 48px;
-    height: 48px;
-    margin: 10px 10px -10px 10px;
-    text-align: center;
-  }
-  p.triste{
-    font-size: 10px;
+  .p-corpo4{
     color: #0521FA;
+    font-size: 18px;
   }
-  .mTriste{
-    width: 50px;
-    height: 50px;
-    margin: 10px 10px -10px 10px;
-    text-align: center;
-  }
-  p.mTriste{
-    font-size: 10px;
+  .p-corpo5{
     color: #070085;
+    font-size: 18px;
   }
   .textarea{
-    width: 370px;
-    height: 200px;
-    margin-left: 20px;
-    background: #fff;
-    font-size: 14px;
+    font-size: 16px;
+  }
+  .p-textarea{
+    color: #6a6a6a;
+    margin-left: 10px;
   }
   .btndiv{
     display: flex;
@@ -159,8 +150,6 @@ ion-content{
     border-radius: 5px;
     margin-top: 20px;
   }
-  .selected {
-    margin-top: -5px;
-    border-bottom: 3px solid  #0D53FC;
-  }
+
+
 }

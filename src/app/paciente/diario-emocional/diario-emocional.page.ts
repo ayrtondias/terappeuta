@@ -16,10 +16,13 @@ export class DiarioEmocionalPage implements OnInit {
   formattedTime: any;
   dataFomateDB: any;
 
+  divSelecionada: string = '';;
+
   select(selecao: string){
     console.log('seleção:', selecao);
     this.emocao = selecao;
   }
+
 
   constructor(
     private router: Router,
@@ -39,6 +42,10 @@ export class DiarioEmocionalPage implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  selecionarDiv(nomeDiv: string) {
+    this.divSelecionada = nomeDiv;
   }
 
   cadastrar(){

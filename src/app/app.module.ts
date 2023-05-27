@@ -16,6 +16,9 @@ import { HomePage } from './psicologo/home/home.page';
 import { CadpacientesPage } from './psicologo/cadpacientes/cadpacientes.page';
 import { HomePacientePage } from './paciente/home-paciente/home-paciente.page';
 
+import { LOCALE_ID } from '@angular/core';
+import localePtBr from '@angular/common/locales/pt';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,7 +41,8 @@ import { HomePacientePage } from './paciente/home-paciente/home-paciente.page';
   entryComponents: [
     HomePage, HomePacientePage // adicione a nova página aqui
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
