@@ -11,19 +11,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="background">
+  <div class="background" *ngFor="let paciente of pacientes">
     <div class="publi">
       <img class="fotoPerfil" src="assets/foto3.jpg">
     </div>
     <div class="info">
       <p>Nome:</p>
-      <ion-label class="label">Luna Dias</ion-label>
+      <ion-label class="label">{{ paciente.nome }}</ion-label>
       <p>Telefone:</p>
-      <ion-label class="label">91981512516</ion-label>
+      <ion-label class="label">{{ paciente.telefone }}</ion-label>
       <p>E-mail:</p>
-      <ion-label class="label">fulanadetal@gmail.com</ion-label>
+      <ion-label class="label">{{ paciente.email }}</ion-label>
       <p>Data de Nascimento:</p>
-      <ion-label class="label">27/06/2000</ion-label>
+      <ion-label class="label">{{ paciente.nascimento }}</ion-label>
     </div>
 
     <div class="plano">
@@ -31,11 +31,11 @@
       <div id="campo-plano">
         <div class="div-esquerda">
           <p>Plano</p>
-          <ion-label class="label">mes</ion-label>
+          <ion-label class="label">{{ paciente.plano }}</ion-label>
         </div>
         <div class="div-direita">
           <p>valor</p>
-          <ion-label class="label">R$ 0,00</ion-label>
+          <ion-label class="label">R${{ paciente.valor }}</ion-label>
         </div>
       </div>
     </div>

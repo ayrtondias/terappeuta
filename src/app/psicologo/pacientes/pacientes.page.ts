@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Router, NavigationExtras  } from '@angular/router';
 import { formatDistanceToNow, format  } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pacientes',
@@ -16,12 +17,15 @@ export class PacientesPage implements OnInit {
 
 paciente: any;
 
+idUsuarioLogado: string = '';
+
 searchTerm: string = '';
 searchResults!: Observable<any[]>;
 
   constructor(
     private router: Router,
     public firestore: AngularFirestore,
+    private navCtrl: NavController,
     private fireAuth: AngularFireAuth
   ) {
 
@@ -58,6 +62,19 @@ searchResults!: Observable<any[]>;
 
 
   ngOnInit() {
+    this.fireAuth.authState.subscribe(user => {
+      if (user) {
+        this.idUsuarioLogado = user.uid;
+      } else {
+        console.log("erro")
+      }
+    });
+  }
+
+
+  mostrarDetalhes(id: any) {
+    this.navCtrl.navigateForward('/detalhes/'+ id );
+    console.log(id);
   }
 
 

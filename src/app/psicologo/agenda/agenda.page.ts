@@ -23,6 +23,8 @@ export class AgendaPage implements OnInit {
   //dataFormatada1: any;
   selectedDate: any;
 
+  idUsuarioLogado: string = '';
+
   public dia: number = this.diaFormatado;
 
 
@@ -66,6 +68,8 @@ export class AgendaPage implements OnInit {
     this.dataFormatada = format(hoje, " 'de' MMMM 'de' yyyy", { locale: ptBR });
     console.log(this.dataFormatada);
 
+
+
     this.usuario = firestore.collection('usuario').valueChanges();
     console.log(this.usuario);
 
@@ -80,6 +84,13 @@ export class AgendaPage implements OnInit {
   }
 
   ngOnInit() {
+    this.fireAuth.authState.subscribe(user => {
+      if (user) {
+        this.idUsuarioLogado = user.uid;
+      } else {
+        console.log("erro")
+      }
+    });
   }
 
 

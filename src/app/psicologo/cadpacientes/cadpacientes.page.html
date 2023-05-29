@@ -15,36 +15,39 @@
     <h1>Cadastro</h1>
     <div class="publi">
       <p>Nome</p>
-      <input class="cxNome">
+      <input class="cxNome" [(ngModel)]="nome">
+
+      <p>E-mail</p>
+      <input class="cxNome" [(ngModel)]="email">
 
       <div id="campo">
         <div class="um">
           <p>Telefone</p>
-          <input >
+          <input [(ngModel)]="telefone">
         </div>
         <div>
           <p>Data de nascimento</p>
-          <input>
+          <input [(ngModel)]="nascimento">
         </div>
       </div>
 
       <div id="campo">
         <div>
           <p>CPF</p>
-          <input>
+          <input [(ngModel)]="cpf">
         </div>
         <div>
           <p>RG</p>
-          <input>
+          <input [(ngModel)]="rg">
         </div>
       </div>
 
       <p>Gênero</p>
-      <select class="cxNome">
+      <select class="cxNome" [(ngModel)]="sexo">
         <option>Selecione</option>
-        <option>Masculino</option>
-        <option>Feminino</option>
-        <option>Outro</option>
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+        <option value="outro">Outro</option>
       </select>
 
       <div class="plano">
@@ -52,23 +55,22 @@
         <div id="campo-plano">
           <div>
             <p>Plano</p>
-            <select class="meuSelect">
+            <select class="meuSelect" [(ngModel)]="plano">
               <option>Selecione</option>
-              <option>Sessão</option>
-              <option>Mensal</option>
-              <option></option>
+              <option value="Sessão">Sessão</option>
+              <option value="Mensal">Mensal</option>
             </select>
           </div>
           <div>
             <p>valor</p>
-            <input class="meuInput">
+            <input class="meuInput" [(ngModel)]="valor">
           </div>
         </div>
       </div>
 
     </div>
 
-    <ion-button class="btn1">Salvar</ion-button>
+    <ion-button class="btn1" [disabled]="!canSave()" (click)="cadastrar()">Salvar</ion-button>
     <ion-button class="btn2">Cancelar</ion-button>
 
   </div>

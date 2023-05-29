@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { format } from 'date-fns';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs/operators';
+
 
 
 
@@ -15,27 +19,46 @@ export class PublicacaoPage implements OnInit {
   data = "";
   hora = "";
   conteudo = '';
+
   habilitaSalvar = false;
+
+  idUsuarioLogado: string = '';
+  user: any;
 
   constructor(
     private router: Router,
     private alertController: AlertController,
     private loadingCtrl: LoadingController,
     private toastController: ToastController,
+    private fireAuth: AngularFireAuth,
+    public storage: AngularFireStorage,
     public firestore: AngularFirestore
-  ) { }
+  ) {
+
+    this.fireAuth.authState.subscribe(user => {
+      if (user) {
+        this.idUsuarioLogado = user.uid;
+      } else {
+        console.log("erro")
+      }
+    });
+
+  }
 
   ngOnInit() {
+
     setInterval(()=>{
       this.habilitaSalvar=!this.habilitaSalvar;
     }, 500);
   }
 
+
+
+
+
   cadastrar(){
     this.presentAlert();
   }
-
-
 
   async presentAlert() {
     const dataAtual = new Date();
@@ -44,57 +67,13 @@ export class PublicacaoPage implements OnInit {
     const formattedTime = format(dataAtual, 'HH:mm:ss');
 
 
-
-
-    const alert = await this.alertController.create({
-      header: 'Alerta!',
-      message: 'Confirmar envio?',
-      buttons: [
-        {
-          text: 'Não',
-          role: 'cancel',
-          handler: () => {
-            console.log('Você cancelou...');
-          }
-        },
-        {
-          text: 'Sim',
-          role: 'confirm',
-          handler: async () => {
-            try{
-              this.firestore.collection('publicacoes').add({
-              conteudo: this.conteudo,
-              data: formattedDate,
-              hora: formattedTime
-
-
-              });
-              this.router.navigateByUrl('home');
-              this.presentToast('Doação registrada com sucesso.');
-            }
-            catch(deuErro){
-              console.log(JSON.stringify(deuErro));
-                this.presentToast('');
-            }
-          }
-        },
-      ],
-
+    this.firestore.collection('publicacoes').add({
+      conteudo: this.conteudo,
+      data: formattedDate,
+      hora: formattedTime,
+      idUser: this.idUsuarioLogado
     });
-
-    await alert.present();
+    this.router.navigateByUrl('home');
   }
-
-
-  async presentToast( mensagem: string ) {
-    const toast = await this.toastController.create({
-      message: mensagem,
-      duration: 3000,
-      position: 'bottom'
-    });
-
-    await toast.present();
-  }
-
 
 }

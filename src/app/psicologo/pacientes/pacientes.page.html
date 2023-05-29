@@ -21,11 +21,13 @@
             <ion-col>Nome</ion-col>
             <ion-col>Telefone</ion-col>
           </ion-row>
-            <ion-row [routerLink]="['/detalhes']" class="corpo" *ngFor="let pac of (searchTerm ? searchResults : paciente) | async">
-              <ion-col >{{pac.cpf}}</ion-col>
-              <ion-col>{{pac.nome}}</ion-col>
-              <ion-col>{{pac.telefone}}</ion-col>
-            </ion-row>
+            <ng-container *ngFor="let pac of (searchTerm ? searchResults : paciente) | async">
+              <ion-row (click)="mostrarDetalhes(pac.id)" class="corpo" *ngIf="idUsuarioLogado === pac.idPsico ">
+                <ion-col >{{pac.cpf}}</ion-col>
+                <ion-col>{{pac.nome}}</ion-col>
+                <ion-col>{{pac.telefone}}</ion-col>
+              </ion-row>
+            </ng-container>
         </ion-grid>
       </div>
       <ion-button class="adc" [routerLink]="['/cadpacientes']">+ Adicionar</ion-button>

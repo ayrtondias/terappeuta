@@ -23,16 +23,21 @@
     <ion-list class="background">
 
       <ion-card class="cardBack" *ngFor="let publicacao of publicacoes | async">
-        <ion-card-header  *ngFor="let user of usuario | async">
-          <ion-card-title class="title">
-            <img class="imgPost" src="assets/foto2.jpg">
-            <p class="pPost">{{ user.nome }}</p>
-            <p class="datapubli">{{ publicacao.data.split('-')[1] + '/' + publicacao.data.split('-')[2] + '/' + publicacao.data.split('-')[0] | date:'dd/MM/yyyy' }}, {{ publicacao.hora }}</p>
+          <ng-container *ngFor="let use of usuarios | async">
+          <ion-card-title class="title" *ngIf=" publicacao.idUser === use.id ">
+              <img class="imgPost" src="assets/foto2.jpg">
+              <div class="divt">
+                <p class="pPost">{{ use.nome }}</p>
+                <p class="datapubli">{{ publicacao.data.split('-')[1] + '/' + publicacao.data.split('-')[2] + '/' + publicacao.data.split('-')[0] | date:'dd/MM/yyyy' }}, {{ publicacao.hora }}</p>
+              </div>
+              <ion-img class="deleteIcon" src="assets/icon/delete-icon.png" (click)="deletarItem(publicacao.id, publicacao.idUser)"></ion-img>
           </ion-card-title>
-        </ion-card-header>
+        </ng-container>
+
+
+
         <ion-card-content>
           <p class="conteudoPost">{{ publicacao.conteudo }}</p>
-          <!-- <ion-img *ngIf="mostrarCard; else naoMostrar"></ion-img> -->
         </ion-card-content>
       </ion-card>
     </ion-list>

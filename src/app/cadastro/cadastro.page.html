@@ -1,0 +1,53 @@
+<ion-content [fullscreen]="true">
+  <div class="background">
+    <h1>Cadastro</h1>
+    <div class="publi">
+      <p>Nome</p>
+      <input class="cxNome" [(ngModel)]="nome">
+
+      <div id="campo">
+        <div class="um">
+          <p>Telefone</p>
+          <input [(ngModel)]="telefone">
+        </div>
+        <div>
+          <p>Data de nascimento</p>
+          <input [(ngModel)]="nascimento">
+        </div>
+      </div>
+
+      <div id="campo">
+        <div>
+          <p>CPF</p>
+          <input [(ngModel)]="cpf">
+        </div>
+        <div>
+          <p>RG</p>
+          <input [(ngModel)]="rg">
+        </div>
+      </div>
+      <p>CRP</p>
+      <input class="cxNome" [(ngModel)]="crp">
+
+      <p>Gênero</p>
+      <select class="cxNome" [(ngModel)]="sexo">
+        <option>Selecione</option>
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+        <option value="outro">Outro</option>
+      </select>
+
+      <p>E-mail</p>
+      <input class="cxNome" [(ngModel)]="email">
+      <p>Senha</p>
+      <input class="cxNome" [(ngModel)]="senha">
+      <p>Senha</p>
+      <input class="cxNome" [(ngModel)]="confsenha">
+
+    </div>
+
+    <ion-button class="btn1" [disabled]="!canSave()" (click)="cadastrar()">Salvar</ion-button>
+    <ion-button class="btn2" [routerLink]="['/login']">Cancelar</ion-button>
+
+  </div>
+</ion-content>

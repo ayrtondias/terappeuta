@@ -48,7 +48,7 @@ const routes: Routes = [
     loadChildren: () => import('./login-paciente/login-paciente.module').then( m => m.LoginPacientePageModule)
   },
   {
-    path: 'detalhes',
+    path: 'detalhes/:id',
     loadChildren: () => import('./psicologo/detalhes/detalhes.module').then( m => m.DetalhesPageModule)
   },
   {
@@ -74,6 +74,10 @@ const routes: Routes = [
   {
     path: 'detalhe-diario/:id',
     loadChildren: () => import('./paciente/detalhe-diario/detalhe-diario.module').then( m => m.DetalheDiarioPageModule)
+  },
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
   }
 
 ];

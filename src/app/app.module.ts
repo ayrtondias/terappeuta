@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { Router } from '@angular/router';
@@ -22,7 +23,7 @@ import localePtBr from '@angular/common/locales/pt';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AngularFireStorageModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyCn8OkoMisJEIi2gn4Tun7jy2uY1O79g44",
       authDomain: "terappeuta-8bfc0.firebaseapp.com",

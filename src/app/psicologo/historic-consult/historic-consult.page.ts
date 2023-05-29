@@ -15,6 +15,7 @@ export class HistoricConsultPage implements OnInit {
 
   consultas: any;
   dataFormatada: any;
+  idUsuarioLogado: string = '';
 
   constructor(
     private router: Router,
@@ -34,6 +35,15 @@ export class HistoricConsultPage implements OnInit {
    }
 
   ngOnInit() {
+
+    this.fireAuth.authState.subscribe(user => {
+      if (user) {
+        this.idUsuarioLogado = user.uid;
+      } else {
+        console.log("erro")
+      }
+    });
+
   }
 
 }

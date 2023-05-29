@@ -14,7 +14,7 @@ import { formatDistanceToNow, format  } from 'date-fns';
 })
 export class HomePacientePage implements OnInit {
   //publicacoes: any;
-  usuario: any;
+  usuarios: any;
   horario: Array<any> = new Array;
   publicacoes: Observable<any[]>
 
@@ -30,21 +30,11 @@ export class HomePacientePage implements OnInit {
     private fireAuth: AngularFireAuth
   ) {
 
-    this.usuario = firestore.collection('usuario').valueChanges();
-    console.log(this.usuario);
-
-    this.publicacoes = firestore.collection('publicacoes', ref =>
+    this.publicacoes = this.firestore.collection('publicacoes', ref =>
     ref.orderBy('data', 'desc').orderBy('hora', 'desc')).valueChanges();
-    console.log(this.publicacoes);
 
-    this.firestore.collection('publicacoes').get().subscribe((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const data = doc.get('data');
-        console.log('Name:', data);
-        this.horario = data;
+    this.usuarios = this.firestore.collection('usuario').valueChanges();
 
-      });
-    });
 
   }
 

@@ -3,30 +3,28 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { FirebaseError } from 'firebase/app'
-import { Validate } from '../../util/validate';
+import { Validate } from '../util/validate';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { identity } from 'rxjs';
 
-
 @Component({
-  selector: 'app-cadpacientes',
-  templateUrl: './cadpacientes.page.html',
-  styleUrls: ['./cadpacientes.page.scss'],
+  selector: 'app-cadastro',
+  templateUrl: './cadastro.page.html',
+  styleUrls: ['./cadastro.page.scss'],
 })
-export class CadpacientesPage implements OnInit {
+export class CadastroPage implements OnInit {
   loading!: HTMLIonLoadingElement;
-  idUsuarioLogado: string = '';
   id: any;
   nome = '';
   nascimento = '';
   cpf= '';
-  rg= '';
+  rg = '';
+  crp = '';
   telefone = '';
   email = '';
   sexo= '';
-  senha= '123456';
-  plano= '';
-  valor= '';
+  senha= '';
+  confsenha= '';
   habilitaSalvar = false;
 
   constructor(
@@ -36,19 +34,9 @@ export class CadpacientesPage implements OnInit {
     private loadingCtrl: LoadingController,
     public firestore: AngularFirestore,
     private fireAuth: AngularFireAuth
-  ) {
-
-   }
+  ) { }
 
   ngOnInit() {
-    this.fireAuth.authState.subscribe(user => {
-      if (user) {
-        this.idUsuarioLogado = user.uid;
-      } else {
-        console.log("erro")
-      }
-    });
-
     setInterval(()=>{
       this.habilitaSalvar=!this.habilitaSalvar;
     }, 500);
@@ -60,9 +48,10 @@ export class CadpacientesPage implements OnInit {
 
   canSave(): boolean{
     const emailValid = Validate.validateEmail(this.email);
+    const senhaValid = this.senha == this.confsenha && this.senha.length >= 6;
     const cpfValid = this.cpf.length >= 11;
 
-    return emailValid! && cpfValid!;
+    return emailValid! && senhaValid! && cpfValid!;
   }
 
   async presentAlert() {
@@ -87,21 +76,18 @@ export class CadpacientesPage implements OnInit {
               console.log(resultado);
 
               const uid = resultado.user!.uid;
-              this.firestore.collection('paciente').doc(uid).set({
+              this.firestore.collection('usuario').doc(uid).set({
                 id: uid,
                 email: this.email,
                 nome: this.nome,
                 cpf: this.cpf,
                 rg: this.rg,
-                nascimento: this.nascimento,
+                crp: this.crp,
                 telefone: this.telefone,
-                sexo: this.sexo,
-                plano: this.plano,
-                valor: this.valor,
-                idPsico: this.idUsuarioLogado
+                sexo: this.sexo
               });
-              this.router.navigateByUrl('pacientes');
-              this.presentToast('Paciente criado com sucesso. Agora faça o login para acessar o sistema!');
+              this.router.navigateByUrl('login');
+              this.presentToast('Usuário criado com sucesso. Agora faça o login para acessar o sistema!');
             }
             catch(error){
               console.log(JSON.stringify(error));
