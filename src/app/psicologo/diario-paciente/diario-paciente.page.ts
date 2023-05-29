@@ -9,18 +9,15 @@ import localePtBr from '@angular/common/locales/pt';
 registerLocaleData(localePtBr);
 
 @Component({
-  selector: 'app-detalhes',
-  templateUrl: './detalhes.page.html',
-  styleUrls: ['./detalhes.page.scss'],
+  selector: 'app-diario-paciente',
+  templateUrl: './diario-paciente.page.html',
+  styleUrls: ['./diario-paciente.page.scss'],
 })
-export class DetalhesPage implements OnInit {
-
+export class DiarioPacientePage implements OnInit {
   idUrl: any;
-
   pacientes: any;
-
+  diarios: any;
   documentos: any;
-
   page: any;
 
   constructor(
@@ -31,21 +28,28 @@ export class DetalhesPage implements OnInit {
     private route: ActivatedRoute,
     private navCtrl: NavController,
     public firestore: AngularFirestore
-  ) { }
+  ) {
+    this.idUrl = this.route.snapshot.params['id'];
+
+
+    this.diarios = firestore.collection("diario-emocional", ref =>
+    ref.orderBy('data', 'desc').orderBy('hora', 'desc')).valueChanges({idField: 'id'});
+
+    this.pacientes = firestore.collection("paciente").valueChanges({idField: 'id'});
+
+
+  }
 
   ngOnInit() {
-    this.idUrl = this.route.snapshot.params['id'];
-    console.log(this.idUrl);
-
-    this.pacientes = this.firestore.collection('paciente')
+    /*this.firestore.collection('diario-emocional')
     .get()
     .toPromise()
     .then((querySnapshot) => {
-      this.pacientes = [];
+      this.diarios = [];
       if (querySnapshot) {
       querySnapshot.forEach((doc) => {
         if (doc.id === this.idUrl) {
-          this.pacientes.push(doc.data());
+          this.diarios.push(doc.data());
         }
       });
     } else {
@@ -55,10 +59,13 @@ export class DetalhesPage implements OnInit {
     })
     .catch((error) => {
       console.log('Erro ao buscar documentos:', error);
-    });
+    });*/
   }
 
-
+  detalhes(id: any) {
+    this.navCtrl.navigateForward('/detalhe-diario-paciente/'+ id );
+    console.log(id);
+  }
 
   mostrarDetalhes(event: any) { //enviar id para outra tela
     //const page = this.page;
@@ -67,6 +74,5 @@ export class DetalhesPage implements OnInit {
     this.navCtrl.navigateForward('/' + page + '/' + id );
     console.log(id);
   }
-
 
 }

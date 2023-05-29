@@ -21,7 +21,6 @@ export class AppComponent {
 
   public appPagesPaciente = [
     { title: 'Home', url: '/home-paciente' },
-    { title: 'Cadastro', url: '/cadastro' },
     { title: 'Diário emocional', url: '/diario-emocional' },
     { title: 'Acompanhamento', url: '/acompanhamento' },
     { title: 'Agendamento', url: '/agendamento' },
@@ -34,7 +33,8 @@ export class AppComponent {
   ngOnInit() {
     this.url1 = ['/home', '/agenda', '/historic-consult',
      '/detalhes', '/notificacoes','/publicacao',
-     '/pacientes', '/cadpacientes', '/configuracao']; // Adicione as URLs desejadas ao array
+     '/pacientes', '/cadpacientes', '/configuracao',
+     '/diario-paciente/', '/detalhe-diario-paciente']; // Adicione as URLs desejadas ao array
 
     this.url2 = ['/home-paciente', '/cadastro', '/diario-emocional',
     '/hist-diario', 'editar-diario', '/detalhe-diario', '/acompanhamento',

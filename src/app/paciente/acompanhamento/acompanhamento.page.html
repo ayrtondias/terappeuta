@@ -21,10 +21,20 @@
             <ion-col>Nome</ion-col>
 
           </ion-row>
-            <ion-row [routerLink]="['/det-psicologo']" class="corpo" *ngFor="let psi of (searchTerm ? searchResults : psicologo) | async">
-              <ion-col>{{psi.nome}}</ion-col>
+          <ng-container *ngFor="let paciente of pacientes | async">
+            <ng-container *ngIf="paciente.id === idUsuarioLogado">
+              <ng-container *ngFor="let psico of psicologo | async">
+                <ng-container *ngIf="paciente.idPsico === psico.id">
+                  <ng-container *ngFor="let psi of (searchTerm ? searchResults : psicologo) | async">
+                    <ion-row class="corpo" *ngIf="paciente.idPsico === psi.id">
+                      <ion-col (click)="mostrarDetalhes(psico.id)">{{psi.nome}}</ion-col>
 
-            </ion-row>
+                    </ion-row>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </ng-container>
         </ion-grid>
       </div>
 

@@ -16,6 +16,7 @@ import { NavController } from '@ionic/angular';
 export class HistDiarioPage implements OnInit {
   loading: HTMLIonLoadingElement | undefined;
   diarios: any;
+  pacientes: any;
 
   constructor(
     private router: Router,
@@ -29,6 +30,10 @@ export class HistDiarioPage implements OnInit {
   ) {
     this.diarios = firestore.collection("diario-emocional", ref =>
     ref.orderBy('data', 'desc').orderBy('hora', 'desc')).valueChanges({idField: 'id'});
+
+    this.pacientes = firestore.collection("paciente").valueChanges({idField: 'id'});
+
+
   }
 
   ngOnInit() {

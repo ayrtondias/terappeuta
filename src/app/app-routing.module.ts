@@ -60,7 +60,7 @@ const routes: Routes = [
     loadChildren: () => import('./paciente/acompanhamento/acompanhamento.module').then( m => m.AcompanhamentoPageModule)
   },
   {
-    path: 'det-psicologo',
+    path: 'det-psicologo/:id',
     loadChildren: () => import('./paciente/det-psicologo/det-psicologo.module').then( m => m.DetPsicologoPageModule)
   },
   {
@@ -78,6 +78,14 @@ const routes: Routes = [
   {
     path: 'cadastro',
     loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },
+  {
+    path: 'diario-paciente/:id',
+    loadChildren: () => import('./psicologo/diario-paciente/diario-paciente.module').then( m => m.DiarioPacientePageModule)
+  },
+  {
+    path: 'detalhe-diario-paciente/:id',
+    loadChildren: () => import('./psicologo/detalhe-diario-paciente/detalhe-diario-paciente.module').then( m => m.DetalheDiarioPacientePageModule)
   }
 
 ];

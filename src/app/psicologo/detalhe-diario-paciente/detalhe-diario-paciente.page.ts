@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, LOCALE_ID } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController, NavController } from '@ionic/angular';
@@ -9,19 +9,25 @@ import localePtBr from '@angular/common/locales/pt';
 registerLocaleData(localePtBr);
 
 @Component({
-  selector: 'app-detalhes',
-  templateUrl: './detalhes.page.html',
-  styleUrls: ['./detalhes.page.scss'],
+  selector: 'app-detalhe-diario-paciente',
+  templateUrl: './detalhe-diario-paciente.page.html',
+  styleUrls: ['./detalhe-diario-paciente.page.scss'],
 })
-export class DetalhesPage implements OnInit {
+export class DetalheDiarioPacientePage implements OnInit {
+  data = new Date();
+  dataAtual: any;
+
+  id: any;
 
   idUrl: any;
 
-  pacientes: any;
+  diarios: any;
 
   documentos: any;
 
-  page: any;
+  formattedDate: any;
+  formattedTime: any;
+  dataFomateDB: any;
 
   constructor(
     private router: Router,
@@ -31,21 +37,35 @@ export class DetalhesPage implements OnInit {
     private route: ActivatedRoute,
     private navCtrl: NavController,
     public firestore: AngularFirestore
-  ) { }
+  ) {
+    const dataAtual = new Date();
+    const dataFormatada = dataAtual.toLocaleString();
+    this.formattedDate = format(dataAtual, 'dd/MM/yyyy');
+    this.dataFomateDB = format(dataAtual, 'yyyy-MM-dd');
+    this.formattedTime = format(dataAtual, 'HH:mm');
+
+    const id = this.route.snapshot.params['id'];
+        this.diarios = firestore.collection("diario-emocional").doc(id).valueChanges();
+
+        console.log('recebeu: ', this.route.snapshot.params['id']);
+
+  }
+
 
   ngOnInit() {
+    this.dataAtual = this.data;
     this.idUrl = this.route.snapshot.params['id'];
     console.log(this.idUrl);
 
-    this.pacientes = this.firestore.collection('paciente')
+    this.diarios = this.firestore.collection('diario-emocional')
     .get()
     .toPromise()
     .then((querySnapshot) => {
-      this.pacientes = [];
+      this.diarios = [];
       if (querySnapshot) {
       querySnapshot.forEach((doc) => {
         if (doc.id === this.idUrl) {
-          this.pacientes.push(doc.data());
+          this.diarios.push(doc.data());
         }
       });
     } else {
@@ -56,17 +76,10 @@ export class DetalhesPage implements OnInit {
     .catch((error) => {
       console.log('Erro ao buscar documentos:', error);
     });
+
   }
 
 
-
-  mostrarDetalhes(event: any) { //enviar id para outra tela
-    //const page = this.page;
-    const page = event.target.value;
-    const id = this.idUrl;
-    this.navCtrl.navigateForward('/' + page + '/' + id );
-    console.log(id);
-  }
 
 
 }

@@ -15,6 +15,11 @@
     <div class="publi">
       <img class="fotoPerfil" src="assets/foto3.jpg">
     </div>
+    <select class="nav" (change)="mostrarDetalhes($event)">
+      <option value="">Selecione</option>
+      <option value="detalhes">Principal</option>
+      <option value="diario-paciente">Diario emocional</option>
+    </select>
     <div class="info">
       <p>Nome:</p>
       <ion-label class="label">{{ paciente.nome }}</ion-label>

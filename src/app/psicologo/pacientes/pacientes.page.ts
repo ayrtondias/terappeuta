@@ -72,7 +72,7 @@ searchResults!: Observable<any[]>;
   }
 
 
-  mostrarDetalhes(id: any) {
+  mostrarDetalhes(id: any) { //enviar id para outra tela
     this.navCtrl.navigateForward('/detalhes/'+ id );
     console.log(id);
   }

@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Router, NavigationExtras  } from '@angular/router';
 import { formatDistanceToNow, format  } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-acompanhamento',
@@ -14,18 +15,22 @@ import { ptBR } from 'date-fns/locale';
 })
 export class AcompanhamentoPage implements OnInit {
   psicologo: any;
+  pacientes: any;
+  idUsuarioLogado: string = '';
 
   searchTerm: string = '';
   searchResults!: Observable<any[]>;
 
     constructor(
       private router: Router,
+      private navCtrl: NavController,
       public firestore: AngularFirestore,
       private fireAuth: AngularFireAuth
     ) {
 
-      this.psicologo = firestore.collection('psicologo' , ref => ref.orderBy('nome', 'asc')).valueChanges();
+      this.psicologo = firestore.collection('usuario' , ref => ref.orderBy('nome', 'asc')).valueChanges({idField: 'id'});
       console.log(this.psicologo);
+      this.pacientes = firestore.collection('paciente').valueChanges({idField: 'id'})
 
      }
 
@@ -55,6 +60,19 @@ export class AcompanhamentoPage implements OnInit {
     }
 
   ngOnInit() {
+
+    this.fireAuth.authState.subscribe(user => {
+      if (user) {
+        this.idUsuarioLogado = user.uid;
+      } else {
+        console.log("erro")
+      }
+    });
+  }
+
+  mostrarDetalhes(id: any) {
+    this.navCtrl.navigateForward('/det-psicologo/'+ id );
+    console.log(id);
   }
 
 }

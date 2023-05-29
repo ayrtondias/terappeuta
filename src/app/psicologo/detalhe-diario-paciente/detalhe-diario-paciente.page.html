@@ -1,0 +1,58 @@
+<ion-header [translucent]="true" class="header">
+  <ion-toolbar>
+      <div class="topo">
+      <ion-buttons slot="start">
+        <ion-menu-button class=""></ion-menu-button>
+      </ion-buttons>
+      <ion-title><a href="#" [routerLink]="['/home']" class="tera">Terappeuta</a></ion-title>
+      <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="background" *ngFor="let diario of diarios">
+      <div class="publi">
+        <div class="topo">
+          <p>{{ diario.data | date:'EEEE' }}</p>
+
+          <div class="time">
+            <div class="dia">
+              <img src="assets/icon/calendar.png" alt="" class="historicIcon">
+              <b class="dia">{{diario.data}}</b>
+            </div>
+            <div class="hora">
+              <img src="assets/icon/time_icon.png" alt="" class="historicIcon">
+              <b class="hora">{{diario.hora}}</b>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="corpo">
+        <div class="p-corpo">
+          <p class="p-corpo">Como está se sentindo?</p>
+          <p class="p-corpo1" *ngIf="diario.emocao === 'Muito Feliz'">{{diario.emocao}}</p>
+          <p class="p-corpo2" *ngIf="diario.emocao === 'Feliz'">{{diario.emocao}}</p>
+          <p class="p-corpo3" *ngIf="diario.emocao === 'Indiferente'">{{diario.emocao}}</p>
+          <p class="p-corpo4" *ngIf="diario.emocao === 'Triste'">{{diario.emocao}}</p>
+          <p class="p-corpo5" *ngIf="diario.emocao === 'Muito Triste'">{{diario.emocao}}</p>
+
+        </div>
+        <div>
+          <ion-img class="imgIcon" *ngIf="diario.emocao === 'Muito Feliz'" src="assets/icon/muito-feliz.png"></ion-img>
+          <ion-img class="imgIcon" *ngIf="diario.emocao === 'Feliz'" src="assets/icon/feliz.png"></ion-img>
+          <ion-img class="imgIcon" *ngIf="diario.emocao === 'Indiferente'" src="assets/icon/indiferente.png"></ion-img>
+          <ion-img class="imgIcon" *ngIf="diario.emocao === 'Triste'" src="assets/icon/triste.png"></ion-img>
+          <ion-img class="imgIcon" *ngIf="diario.emocao === 'Muito Triste'" src="assets/icon/muito-triste.png"></ion-img>
+        </div>
+      </div>
+      <div class="textarea">
+        <p class="textarea">Como está sendo seu dia?</p>
+        <ion-textarea class="p-textarea">{{diario.msg}}</ion-textarea>
+      </div>
+      <ion-button>voltar</ion-button>
+    </div>
+  </ion-content>

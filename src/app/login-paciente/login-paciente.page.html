@@ -7,9 +7,9 @@
       </div>
       <h1>Bem-Vindo</h1>
       <img class="publi" src="assets/psicologos_e_psicologia.png">
-      <input class="campo" placeholder="E-mail">
-      <input class="campo" placeholder="Senha" type="password">
-      <ion-button class="btn3" [routerLink]="['/home-paciente']">Login</ion-button>
+      <input class="campo" placeholder="E-mail" type="email"  [(ngModel)]="email">
+      <input class="campo" placeholder="Senha" type="password" [(ngModel)]="senha">
+      <ion-button class="btn3" [disabled]="!canSave()" expand="block" (click)="entrar()">Login</ion-button>
     </div>
   </div>
 </ion-content>

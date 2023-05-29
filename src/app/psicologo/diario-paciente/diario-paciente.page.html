@@ -1,23 +1,28 @@
 <ion-header [translucent]="true" class="header">
   <ion-toolbar>
-    <div class="topo">
-    <ion-buttons slot="start">
-      <ion-menu-button class=""></ion-menu-button>
-    </ion-buttons>
-    <ion-title><a href="#" [routerLink]="['/home-paciente']" class="tera">Terappeuta</a></ion-title>
-    <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
-  </div>
-</ion-toolbar>
+      <div class="topo">
+      <ion-buttons slot="start">
+        <ion-menu-button class=""></ion-menu-button>
+      </ion-buttons>
+      <ion-title><a href="#" [routerLink]="['/home']" class="tera">Terappeuta</a></ion-title>
+      <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
+    </div>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="background">
     <div class="publi">
-      <h1>Histórico</h1>
+      <img class="fotoPerfil" src="assets/foto3.jpg">
     </div>
-    <ng-container *ngFor=" let paciente of pacientes | async">
+
+    <select class="nav" (change)="mostrarDetalhes($event)">
+      <option value="">Selecione</option>
+      <option value="detalhes">Principal</option>
+      <option value="diario-paciente">Diario emocional</option>
+    </select>
       <ng-container *ngFor="let diario of diarios | async">
-        <div class="campo" *ngIf="diario.idUser === paciente.id">
+        <div class="campo" *ngIf="diario.idUser === idUrl">
           <ion-img class="imgIcon" *ngIf="diario.emocao === 'Muito Feliz'" src="assets/icon/muito-feliz.png"></ion-img>
           <ion-img class="imgIcon" *ngIf="diario.emocao === 'Feliz'" src="assets/icon/feliz.png"></ion-img>
           <ion-img class="imgIcon" *ngIf="diario.emocao === 'Indiferente'" src="assets/icon/indiferente.png"></ion-img>
@@ -27,12 +32,11 @@
           <b>{{diario.data.split('-')[1] + '/' + diario.data.split('-')[2] + '/' + diario.data.split('-')[0] | date:'dd/MM/yyyy'}}</b> |
           <b>{{diario.hora}}</b>
 
-          <ion-img class="icon" src="assets/icon/text_icon.png" (click)="mostrarDetalhes(diario.id)"></ion-img>
-          <ion-img class="icon" src="assets/icon/delete-icon.png" (click)="deletarItem(diario.id)"></ion-img>
+          <ion-img class="icon" src="assets/icon/text_icon.png" (click)="detalhes(diario.id)"></ion-img>
 
         </div>
       </ng-container>
-    </ng-container>
 
   </div>
+
 </ion-content>
