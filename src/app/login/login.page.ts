@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
     const toast = await this.toastController.create({
       message: mensagem,
       duration: 3000,
-      position: 'bottom'
+      position: 'middle'
     });
     await toast.present();
   }
@@ -78,24 +78,22 @@ export class LoginPage implements OnInit {
       .then((querySnapshot) => {
         this.usuario = [];
         if (querySnapshot) {
-        querySnapshot.forEach((doc) => {
-          if (doc.id === uid) {
-            this.presentToast('Bem vindo!');
-            this.router.navigateByUrl('home');
-          }
-        });
-    } else {
-      console.log('Nenhum documento encontrado.');
+          querySnapshot.forEach((doc) => {
+            if (doc.id === uid) {
+              this.presentToast('Bem vindo!');
+              this.router.navigateByUrl('home');
+            } else {
+                this.presentToast('Usuário ou senha incorretos!')
+            }
+          });
+        } else {
+          console.log('Nenhum documento encontrado.');
     }
       console.log(this.documentos);
     })
-
-
-
     }
     catch(erroQueOcorreu){
       console.log(erroQueOcorreu);
-      this.presentToast('Usuário ou senha incorretos!');
     }
     await this.fecharLoading();
   }
@@ -116,7 +114,6 @@ export class LoginPage implements OnInit {
   private async fecharLoading(){
     await this.loading.dismiss();
   }
-
 
   nav(){
     return this.navCtrl.navigateForward('/cadastro');
