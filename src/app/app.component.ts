@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,10 @@ import { Router } from '@angular/router';
 export class AppComponent {
   url1: string[] = [];
   url2: string[] = [];
+
+  idUsuarioLogado: string = '';
+  pacientes: any;
+  psicologo: any;
 
   public appPages = [
     { title: 'Home', url: '/home' },
@@ -28,7 +34,25 @@ export class AppComponent {
     { title: 'Pagamentos', url: '/pagamentos' },
     { title: 'Configuração', url: '/config-paciente' },
   ];
-  constructor(public router: Router) {}
+  constructor(
+    private fireAuth: AngularFireAuth,
+    public firestore: AngularFirestore,
+    public router: Router
+    ) {
+      this.psicologo = firestore.collection('usuario').valueChanges({idField: 'id'});
+      console.log("retono: ",this.psicologo);
+      this.pacientes = firestore.collection('paciente').valueChanges({idField: 'id'});
+
+    this.fireAuth.authState.subscribe(user => {
+      if (user) {
+        this.idUsuarioLogado = user.uid;
+        console.log(this.idUsuarioLogado);
+      } else {
+        console.log("erro");
+      }
+    });
+
+  }
 
   ngOnInit() {
     this.url1 = ['/home', '/agenda', '/historic-consult',
@@ -41,5 +65,6 @@ export class AppComponent {
     '/det-psicologo', '/agendamento', '/sessoes', '/pagamentos',
     '/config-paciente'];
   }
+
 
 }

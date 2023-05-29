@@ -5,7 +5,15 @@
       <ion-list>
         <div class="background">
           <img class="imgPost" src="assets/foto2.jpg">
-          <ion-label class="nome">Nome</ion-label>
+          <ng-container *ngFor="let psi of psicologo | async ">
+            <ion-label class="nome" *ngIf="psi.id === idUsuarioLogado">{{ psi.nome }}</ion-label>
+            </ng-container>
+
+                 <ng-container *ngFor="let paciente of pacientes  | async ">
+                  <ion-label class="nome"*ngIf="paciente.id === idUsuarioLogado">{{ paciente.nome }}</ion-label>
+              </ng-container>
+
+
         </div>
 
             <ion-menu-toggle>
