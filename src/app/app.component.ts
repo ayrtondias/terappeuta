@@ -31,7 +31,6 @@ export class AppComponent {
     { title: 'Acompanhamento', url: '/acompanhamento' },
     { title: 'Agendamento', url: '/agendamento' },
     { title: 'Sessões', url: '/sessoes' },
-    { title: 'Pagamentos', url: '/pagamentos' },
     { title: 'Configuração', url: '/config-paciente' },
   ];
   constructor(

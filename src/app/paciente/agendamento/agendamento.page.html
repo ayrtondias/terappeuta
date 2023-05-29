@@ -1,0 +1,47 @@
+<ion-header [translucent]="true" class="header">
+  <ion-toolbar>
+    <div class="topo">
+    <ion-buttons slot="start">
+      <ion-menu-button class=""></ion-menu-button>
+    </ion-buttons>
+    <ion-title><a href="#" [routerLink]="['/home-paciente']" class="tera">Terappeuta</a></ion-title>
+    <a href="#" [routerLink]="['/notificacoes']"><img class="not-icon" src="assets/icon/alarm_alert.png"></a>
+  </div>
+</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="background">
+    <div class="publi">
+      <h1>Agendamento</h1>
+
+      <div>
+        <ion-grid>
+          <ion-row class="cabecalho">
+            <ion-col>Horario</ion-col>
+            <ion-col>Disponibilidade</ion-col>
+          </ion-row>
+          <ion-row class="corpo">
+            <ion-col  (click)="mostrarDetalhes('08:00', '09:00')">08:00 - 09:00</ion-col>
+            <ion-col >Indisponivel</ion-col>
+          </ion-row>
+          <ion-row class="corpo">
+            <ion-col  (click)="mostrarDetalhes('09:00', '10:00')">09:00 - 10:00</ion-col>
+            <ion-col >Indisponivel</ion-col>
+          </ion-row>
+          <ion-row class="corpo">
+            <ion-col (click)="mostrarDetalhes('10:00', '11:00')">10:00 - 11:00</ion-col>
+            <ion-col >Indisponivel</ion-col>
+          </ion-row>
+          <ion-row class="corpo">
+            <ion-col  (click)="mostrarDetalhes('11:00', '12:00')">11:00 - 12:00</ion-col>
+            <ion-col >Indisponivel</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+
+    </div>
+  </div>
+
+</ion-content>

@@ -18,6 +18,8 @@ export class AcompanhamentoPage implements OnInit {
   pacientes: any;
   idUsuarioLogado: string = '';
 
+  horario: any;
+
   searchTerm: string = '';
   searchResults!: Observable<any[]>;
 

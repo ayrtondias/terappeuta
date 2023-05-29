@@ -86,6 +86,10 @@ const routes: Routes = [
   {
     path: 'detalhe-diario-paciente/:id',
     loadChildren: () => import('./psicologo/detalhe-diario-paciente/detalhe-diario-paciente.module').then( m => m.DetalheDiarioPacientePageModule)
+  },
+  {
+    path: 'agendamento',
+    loadChildren: () => import('./paciente/agendamento/agendamento.module').then( m => m.AgendamentoPageModule)
   }
 
 ];
