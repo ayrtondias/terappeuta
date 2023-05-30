@@ -30,8 +30,10 @@
                 <p class="pPost">{{ use.nome }}</p>
                 <p class="datapubli">{{ publicacao.data.split('-')[1] + '/' + publicacao.data.split('-')[2] + '/' + publicacao.data.split('-')[0] | date:'dd/MM/yyyy' }}, {{ publicacao.hora }}</p>
               </div>
-              <ion-img class="deleteIcon" src="assets/icon/delete-icon.png" (click)="deletarItem(publicacao.id, publicacao.idUser)"></ion-img>
-          </ion-card-title>
+              <div *ngIf="publicacao.idUser === idUsuarioLogado">
+                <ion-img class="deleteIcon" src="assets/icon/delete-icon.png" (click)="deletarItem(publicacao.id, publicacao.idUser)"></ion-img>
+              </div>
+        </ion-card-title>
         </ng-container>
 
 
