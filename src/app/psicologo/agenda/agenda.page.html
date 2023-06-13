@@ -22,13 +22,14 @@
       <ion-button class="bt" [routerLink]="['/historic-consult']">Historico de consultas</ion-button>
       <div>
         <ion-grid>
-          <ng-container *ngFor="let agenda of agendaDia | async">
-            <ng-container *ngIf="idUsuarioLogado === agenda.idPsico">
+
           <ion-row class="cabecalho">
             <ion-col class="col1"><a (click)="decrementarContador()"><</a></ion-col>
             <ion-col size="5">{{ dia }}{{ dataFormatada }}</ion-col>
             <ion-col class="col2"><a (click)="incrementarContador()">></a></ion-col>
           </ion-row>
+          <ng-container *ngFor="let agenda of agendaDia | async">
+            <ng-container *ngIf="idUsuarioLogado === agenda.idPsico">
 
           <ion-row class="corpo" >
 

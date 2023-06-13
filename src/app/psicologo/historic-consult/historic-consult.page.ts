@@ -28,7 +28,6 @@ export class HistoricConsultPage implements OnInit {
 
 
     this.consultas = firestore.collection('agenda' , ref => ref
-    .where('data', '<=', dataFormatada)
     .orderBy('data', 'desc')
     .orderBy('inicio', 'desc')).valueChanges();
     console.log("Aqui: ", this.consultas);
