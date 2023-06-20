@@ -90,6 +90,10 @@ const routes: Routes = [
   {
     path: 'agendamento',
     loadChildren: () => import('./paciente/agendamento/agendamento.module').then( m => m.AgendamentoPageModule)
+  },
+  {
+    path: 'sessoes',
+    loadChildren: () => import('./paciente/sessoes/sessoes.module').then( m => m.SessoesPageModule)
   }
 
 ];
