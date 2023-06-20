@@ -13,6 +13,7 @@ import { ptBR } from 'date-fns/locale';
 })
 export class HistoricConsultPage implements OnInit {
 
+  paciente: any;
   consultas: any;
   dataFormatada: any;
   idUsuarioLogado: string = '';
@@ -31,6 +32,8 @@ export class HistoricConsultPage implements OnInit {
     .orderBy('data', 'desc')
     .orderBy('inicio', 'desc')).valueChanges();
     console.log("Aqui: ", this.consultas);
+
+    this.paciente = firestore.collection('paciente').valueChanges();
    }
 
   ngOnInit() {

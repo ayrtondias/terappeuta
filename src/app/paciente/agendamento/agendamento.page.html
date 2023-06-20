@@ -16,28 +16,51 @@
       <h1>Agendamento</h1>
 
       <div>
+
+          <input class="input-data" type="date" [(ngModel)]="selectedDate" (input)="onDateInput($event)" (input)="valorMuda()">
+
+
+        <select class="selectPsico" [(ngModel)]="psico" (input)="valorMuda()">
+          <option value=''>Selecione</option>
+          <option value="{{ psico.id }}" *ngFor="let psico of psicologo | async">
+            {{ psico.nome }}
+          </option>
+        </select>
+
         <ion-grid>
           <ion-row class="cabecalho">
             <ion-col>Horario</ion-col>
             <ion-col>Disponibilidade</ion-col>
           </ion-row>
-          <ion-row class="corpo">
-            <ion-col  (click)="mostrarDetalhes('08:00', '09:00')">08:00 - 09:00</ion-col>
-            <ion-col >Indisponivel</ion-col>
-          </ion-row>
-          <ion-row class="corpo">
-            <ion-col  (click)="mostrarDetalhes('09:00', '10:00')">09:00 - 10:00</ion-col>
-            <ion-col >Indisponivel</ion-col>
-          </ion-row>
-          <ion-row class="corpo">
-            <ion-col (click)="mostrarDetalhes('10:00', '11:00')">10:00 - 11:00</ion-col>
-            <ion-col >Indisponivel</ion-col>
-          </ion-row>
-          <ion-row class="corpo">
-            <ion-col  (click)="mostrarDetalhes('11:00', '12:00')">11:00 - 12:00</ion-col>
-            <ion-col >Indisponivel</ion-col>
-          </ion-row>
+
+          <ng-container *ngIf="psico !== ''; else selecione">
+            <ion-row class="corpo">
+              <ion-col  (click)="selectHora(1)">08:00 - 09:00</ion-col>
+              <ion-col *ngIf="hora1 !== ''; else dispo">{{hora1}}</ion-col>
+            </ion-row>
+            <ion-row class="corpo">
+              <ion-col  (click)="selectHora(2)">09:00 - 10:00</ion-col>
+              <ion-col *ngIf="hora2 !== ''; else dispo">{{hora2}}</ion-col>
+            </ion-row>
+            <ion-row class="corpo">
+              <ion-col  (click)="selectHora(3)">10:00 - 11:00</ion-col>
+              <ion-col *ngIf="hora3 !== ''; else dispo">{{hora3}}</ion-col>
+            </ion-row>
+            <ion-row class="corpo">
+              <ion-col  (click)="selectHora(4)">11:00 - 12:00</ion-col>
+              <ion-col *ngIf="hora4 !== ''; else dispo">{{hora4}}</ion-col>
+            </ion-row>
+
+            <ng-template #dispo>
+              <ion-col>Disponivel</ion-col>
+            </ng-template>
+
+          </ng-container>
+            <ng-template #selecione>
+              <ion-col>Selecione um Psicologo</ion-col>
+            </ng-template>
         </ion-grid>
+
       </div>
 
 

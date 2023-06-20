@@ -5,6 +5,7 @@ import { LoadingController, ToastController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Validate } from '../util/validate';
 import { NavController } from '@ionic/angular';
+import { error } from 'console';
 
 @Component({
   selector: 'app-login-paciente',
@@ -29,19 +30,7 @@ export class LoginPacientePage implements OnInit {
     private toastController: ToastController,
     private navCtrl: NavController,
     private fireAuth: AngularFireAuth
-  ) {
-
-    firestore.collection('usuario').get()
-    .toPromise()
-    .then((querySnapshot) => {
-      if (querySnapshot) {
-        querySnapshot.forEach((doc) => {
-          this.id = doc.id;
-        });
-      }
-    });
-
-  }
+  ) {  }
 
   ngOnInit() {
   }
@@ -75,18 +64,15 @@ export class LoginPacientePage implements OnInit {
       .get()
       .toPromise()
       .then((querySnapshot) => {
-        this.usuario = [];
         if (querySnapshot) {
           querySnapshot.forEach((doc) => {
             if (doc.id === uid) {
-              this.presentToast('Bem vindo!');
               this.router.navigateByUrl('home-paciente');
-            } else {
-                this.presentToast('Usuário ou senha incorretos!')
+              this.presentToast('Bem vindo!');
             }
           });
         } else {
-          console.log('Nenhum documento encontrado.');
+          console.log('Usuário ou senha incorretos!');
     }
       console.log(this.documentos);
     })

@@ -51,6 +51,26 @@ ion-content{
     border-radius: 5px;
     border: 1px solid #7d7d7d;
   }
+  .input-data{
+    background: #fff;
+    display: flex;
+    margin-left: 100px;
+    width: 170px;
+    height: 30px;
+    border: 1px solid #7d7d7d;
+  }
+  .input-data::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    color: #7d7d7d; /* Cor desejada para o item do calendário */
+  }
+  .selectPsico{
+    background: #fff;
+    display: flex;
+    margin-top: 10px;
+    width: 380px;
+    height: 30px;
+    border: 1px solid #7d7d7d;
+  }
   .cabecalho{
     display: flex;
     align-items: center;

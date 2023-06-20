@@ -15,18 +15,24 @@
     <div class="publi">
       <h1>Historico de consultas</h1>
       <ng-container *ngFor="let consulta of consultas | async">
-        <div class="cx"  *ngIf="idUsuarioLogado === consulta.idPsico">
+        <ng-container *ngFor="let pac of paciente | async">
+          <ng-container *ngIf="idUsuarioLogado === consulta.idPsico">
+            <ng-container *ngIf="pac.id === consulta.idPaciente">
+              <div class="cx" >
 
-            <div class="circle">
-              <p class="pdia">{{ consulta.data.split('-')[2]  }}</p>
-              <p class="pmes">{{ consulta.data | date:'MMM' }}</p>
-            </div>
-            <div class="info">
-            <p>{{consulta.nome}}</p>
-            <p class="info-status">{{consulta.inicio}} - {{consulta.fim}} | {{consulta.status}}</p>
-          </div>
+                <div class="circle">
+                  <p class="pdia">{{ consulta.data.split('-')[2]  }}</p>
+                  <p class="pmes">{{ consulta.data | date:'MMM' }}</p>
+                </div>
+                <div class="info">
+                  <p>{{pac.nome}}</p>
+                  <p class="info-status">{{consulta.inicio}} - {{consulta.fim}} | {{consulta.status}}</p>
+                </div>
+              </div>
+          </ng-container>
 
-        </div>
+          </ng-container>
+        </ng-container>
       </ng-container>
 
     </div>

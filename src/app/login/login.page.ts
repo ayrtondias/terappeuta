@@ -31,16 +31,6 @@ export class LoginPage implements OnInit {
     private fireAuth: AngularFireAuth
   ) {
 
-    firestore.collection('usuario').get()
-    .toPromise()
-    .then((querySnapshot) => {
-      if (querySnapshot) {
-        querySnapshot.forEach((doc) => {
-          this.id = doc.id;
-        });
-      }
-    });
-
   }
 
   ngOnInit() {

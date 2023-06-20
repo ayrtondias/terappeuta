@@ -13,77 +13,34 @@ import { ptBR } from 'date-fns/locale';
 })
 export class AgendaPage implements OnInit {
 
-  public hoje = new Date();
-  public diaFormatado = parseInt(format(this.hoje, "dd"));
-
-
+  paciente: any;
   usuario: any;
   agendaDia: any;
   dataFormatada: any;
   //dataFormatada1: any;
-  selectedDate: any;
+  public selectedDate: string = '';
 
   idUsuarioLogado: string = '';
-
-  public dia: number = this.diaFormatado;
-
-
-  public dataFormatada1 = format(this.hoje, "yyyy-MM-") + this.dia;
-
-
-
-  incrementarContador() {
-    this.dia++;
-    //console.log("CONTADOR: ", this.dia);
-    this.agendaDia = this.firestore.collection('agenda' , ref => ref.where('data', '==', format(this.hoje, "yyyy-MM-") + this.dia).orderBy('inicio', 'asc')).valueChanges();
-    console.log("Aqui: ",this.agendaDia);
-  }
-
-  decrementarContador() {
-    this.dia--;
-    //console.log("CONTADOR: ", this.dia);
-    this.agendaDia = this.firestore.collection('agenda' , ref => ref.where('data', '==', format(this.hoje, "yyyy-MM-") + this.dia).orderBy('inicio', 'asc')).valueChanges();
-  }
-
 
   constructor(
     private router: Router,
     public firestore: AngularFirestore,
     private fireAuth: AngularFireAuth
   ) {
-
-    const hoje = new Date();
-
-
-
-    const dataFormatada2 = format(hoje, "yyyy-MM-dd");
-    console.log(dataFormatada2);
-
-
-
-    console.log("data formatada",this.dataFormatada1);
-
-
-
-    this.dataFormatada = format(hoje, " 'de' MMMM 'de' yyyy", { locale: ptBR });
-    console.log(this.dataFormatada);
-
-
-
     this.usuario = firestore.collection('usuario').valueChanges();
     console.log(this.usuario);
 
-    this.agendaDia = firestore.collection('agenda' , ref => ref.where('data', '==', format(this.hoje, "yyyy-MM-") + this.dia).orderBy('inicio', 'asc')).valueChanges();
-    console.log("Aqui: ",this.agendaDia);
-
-    console.log(this.selectedDate);
-
-
-
+    this.paciente = firestore.collection('paciente').valueChanges({idField: 'id'});
+    console.log(this.paciente);
 
   }
 
   ngOnInit() {
+    const today = new Date();
+    this.selectedDate = today.toISOString().split('T')[0];
+    this.banco(this.selectedDate);
+
+
     this.fireAuth.authState.subscribe(user => {
       if (user) {
         this.idUsuarioLogado = user.uid;
@@ -93,6 +50,29 @@ export class AgendaPage implements OnInit {
     });
   }
 
+  incrementarContador() {
+    const currentDate = new Date(this.selectedDate);
+    currentDate.setDate(currentDate.getDate() + 1);
+    this.selectedDate = currentDate.toISOString().split('T')[0];
+    this.banco(this.selectedDate);
+  }
 
+  decrementarContador() {
+    const currentDate = new Date(this.selectedDate);
+    currentDate.setDate(currentDate.getDate() - 1);
+    this.selectedDate = currentDate.toISOString().split('T')[0];
+    this.banco(this.selectedDate);
+  }
+
+  onDateInput(event: any) {
+    this.selectedDate =  event.target.value;
+    this.banco(this.selectedDate);
+
+  }
+
+  banco(selectedDate: any){
+    this.agendaDia = this.firestore.collection('agenda' , ref => ref.where('data', '==', selectedDate).orderBy('inicio', 'asc')).valueChanges();
+    console.log("Aqui: ",this.agendaDia);
+  }
 
 }

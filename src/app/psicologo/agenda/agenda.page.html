@@ -25,23 +25,29 @@
 
           <ion-row class="cabecalho">
             <ion-col class="col1"><a (click)="decrementarContador()"><</a></ion-col>
-            <ion-col size="5">{{ dia }}{{ dataFormatada }}</ion-col>
+            <ion-col><input class="calendar" type="date" [(ngModel)]="selectedDate" (input)="onDateInput($event)"></ion-col>
             <ion-col class="col2"><a (click)="incrementarContador()">></a></ion-col>
+
+
           </ion-row>
+
           <ng-container *ngFor="let agenda of agendaDia | async">
+            <ng-container *ngFor="let pac of paciente | async">
             <ng-container *ngIf="idUsuarioLogado === agenda.idPsico">
+              <ng-container *ngIf="agenda.idPaciente === pac.id">
 
-          <ion-row class="corpo" >
+              <ion-row class="corpo" >
 
-              <ion-col>{{agenda.inicio}} - {{agenda.fim}}</ion-col>
-              <ion-col>{{agenda.nome}}</ion-col>
-              <ion-col>{{agenda.status}}</ion-col>
-              <ion-col size="1"><img class="icon" src="assets/icon/approved.png"></ion-col>
-              <ion-col size="1"><img class="icon" src="assets/icon/cancel.png"></ion-col>
+                  <ion-col>{{agenda.inicio}} - {{agenda.fim}}</ion-col>
+                  <ion-col>{{pac.nome}}</ion-col>
+                  <ion-col size="1"><img class="icon" src="assets/icon/approved.png"></ion-col>
+                  <ion-col size="1"><img class="icon" src="assets/icon/cancel.png"></ion-col>
 
-          </ion-row>
-        </ng-container>
-      </ng-container>
+              </ion-row>
+            </ng-container>
+            </ng-container>
+            </ng-container>
+          </ng-container>
         </ion-grid>
 
       </div>

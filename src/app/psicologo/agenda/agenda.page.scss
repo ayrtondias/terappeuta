@@ -73,6 +73,14 @@ ion-content{
     font-size: 14px;
     color: #000;
   }
+  .calendar{
+    background: #d9d9d9;
+    border: none;
+    font-size: 14px;
+  }
+  .calendar:focus {
+    outline: none;
+  }
   .col1{
     margin-left: 25px;
     margin-right: 20px;
@@ -97,7 +105,4 @@ ion-content{
     width: 15px;
     height: 15px;
   }
-
-
-
 }
